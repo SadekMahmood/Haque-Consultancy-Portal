@@ -1,0 +1,2012 @@
+<html lang="en">
+ <head>
+  <title>
+   New Application | EduConnect
+  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+        font-family: "Inter", sans-serif;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .active-menu {
+        color: #2563eb !important;
+      }
+      .active-bg {
+        background-color: #e0e7ff !important;
+      }
+      .transition-transform {
+        transition: transform 0.25s;
+      }
+  </style>
+  <style>
+   @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fff;
+        padding: 24px;
+        color: #1f2937;
+        font-size: 16px;
+        font-weight: 400;
+      }
+  </style>
+ </head>
+ <body class="bg-white text-[#18181b] min-h-screen flex flex-col">
+  <!-- Topbar -->
+  <header class="w-full border-b border-gray-200 bg-white flex items-center h-16 z-30 fixed top-0">
+   <nav aria-label="Primary Navigation" class="flex flex-1 items-center px-4 md:px-12 w-full relative">
+    <span class="font-bold text-lg pr-5 md:pr-8 select-none whitespace-nowrap">
+     EduConnect
+    </span>
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex text-base flex-1 gap-2 lg:gap-6 items-center ml-1">
+     <li>
+      <a class="flex items-center gap-1 text-gray-700 font-medium py-2 px-3 transition-colors rounded-lg nav-menu-link" href="AgentDashboard.html" id="dashboard-link">
+       <i class="fas fa-th-large text-gray-500">
+       </i>
+       <span>
+        Dashboard
+       </span>
+      </a>
+     </li>
+     <li>
+      <a class="flex items-center gap-1 text-gray-700 font-medium py-2 px-3 transition-colors rounded-lg nav-menu-link" href="ApplicationDash.html" id="applications-link">
+       <i class="fas fa-folder-open text-gray-500">
+       </i>
+       <span>
+        Applications
+       </span>
+      </a>
+     </li>
+    </ul>
+    <div class="flex-1 md:hidden">
+    </div>
+    <!-- Right quick buttons -->
+    <div class="flex items-center gap-2 ml-auto">
+     <a class="hidden md:inline-block px-3 py-1.5 rounded-lg text-blue-600 bg-blue-100 font-medium hover:bg-blue-200 text-sm" href="help.html">
+      Help
+     </a>
+     <a class="px-3 md:px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm shadow transition" href="NewApplication.html">
+      New Application
+     </a>
+     <!-- Profile Menu -->
+     <div class="relative ml-2">
+      <button class="h-9 w-9 rounded-full overflow-hidden border border-gray-300 flex-shrink-0 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" id="profileButton">
+       <img alt="Profile picture of a smiling person with short hair, wearing a blue shirt, looking directly at the camera" class="w-full h-full object-cover" height="100" src="https://storage.googleapis.com/a1aa/image/fb3f3d3b-2218-41fb-9b2d-2abeba8eaddf.jpg" width="100"/>
+      </button>
+      <!-- Profile Dropdown Menu -->
+      <div class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 border border-gray-100 z-50" id="profileMenu">
+       <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-50" href="#">
+        <i class="fas fa-user w-5">
+        </i>
+        <span>
+         Profile
+        </span>
+       </a>
+      
+       <div class="border-t border-gray-100 my-1">
+       </div>
+       <a class="flex items-center px-4 py-2 text-red-600 hover:bg-gray-50" href="Login.html" onclick="handleLogout()">
+        <i class="fas fa-sign-out-alt w-5">
+        </i>
+        <span>
+         Logout
+        </span>
+       </a>
+      </div>
+     </div>
+     <!-- Hamburger mobile menu -->
+     <button aria-label="Open menu" class="md:hidden ml-1 h-9 w-9 flex items-center justify-center rounded-lg active:bg-gray-100" id="mobileMenuButton">
+      <i class="fas fa-bars text-xl text-gray-600">
+      </i>
+     </button>
+    </div>
+    <!-- Mobile menu overlay -->
+    <div class="fixed inset-0 z-50 bg-black/30 hidden" id="mobileMenuOverlay">
+    </div>
+    <!-- Mobile Menu -->
+    <div class="fixed top-0 right-0 w-64 max-w-full h-full bg-white shadow-lg z-50 flex flex-col p-5 gap-2 transform translate-x-full transition-transform duration-300 md:hidden" id="mobileMenu" style="transition:transform 0.3s">
+     <div class="flex w-full justify-between items-center mb-5">
+      <span class="font-bold text-lg">
+       Menu
+      </span>
+      <button class="text-gray-500 hover:text-blue-700 h-8 w-8 flex items-center justify-center rounded-md" id="closeMobileMenu">
+       <i class="fas fa-times text-2xl">
+       </i>
+      </button>
+     </div>
+     <a class="flex gap-2 items-center py-3 px-3 rounded-lg nav-menu-link" href="AgentDashboard.html" id="dashboard-link-m">
+      <i class="fas fa-th-large text-gray-500">
+      </i>
+      Dashboard
+     </a>
+     <a class="flex gap-2 items-center py-3 px-3 rounded-lg nav-menu-link" href="ApplicationDash.html" id="applications-link-m">
+      <i class="fas fa-folder-open text-gray-500">
+      </i>
+      Applications
+     </a>
+     <div class="border-t border-gray-200 my-4">
+     </div>
+     <a class="px-3 py-2 rounded-lg text-blue-600 bg-blue-100 font-medium hover:bg-blue-200 text-sm" href="help.html">
+      Help
+     </a>
+     <a class="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm shadow transition" href="NewApplication.html">
+      New Application
+     </a>
+    </div>
+   </nav>
+  </header>
+  <!-- Main content -->
+  <main class="flex-1 mt-16 px-4 md:px-10 lg:px-12 pb-8 pt-6 bg-gray-50">
+   <!-- Breadcrumb -->
+   <nav aria-label="Breadcrumb" class="flex text-sm text-gray-400 mb-6 pt-2">
+    <ol class="flex space-x-2 items-center overflow-x-auto">
+     <li>
+      <a class="hover:underline text-gray-500" href="#">
+       Dashboard
+      </a>
+     </li>
+     <li>
+      <i class="fas fa-chevron-right text-xs mx-1">
+      </i>
+     </li>
+     <li>
+      <a class="hover:underline text-gray-500" href="#">
+       Students
+      </a>
+     </li>
+     <li>
+      <i class="fas fa-chevron-right text-xs mx-1">
+      </i>
+     </li>
+     <li class="text-gray-700 font-semibold">
+      New Application
+     </li>
+    </ol>
+   </nav>
+   <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 gap-2">
+    <h1 class="text-2xl font-bold">
+     New Application
+    </h1>
+   </div>
+   <div class="text-gray-500 mb-7 text-sm md:text-base">
+    Create a new student application
+   </div>
+   <form class="space-y-8 max-w-4xl" id="applicationForm">
+    <!-- Multiple University Applications Container -->
+    <div class="space-y-8" id="universityApplicationsContainer">
+     <!-- Single University Application Template -->
+     <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 university-application">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-lg font-semibold">
+        University Application 1
+       </h2>
+       <button aria-label="Remove this university application" class="text-red-600 hover:text-red-800 text-sm font-medium remove-university-application hidden" type="button">
+        <i class="fas fa-times">
+        </i>
+        Remove
+       </button>
+      </div>
+      <!-- Centre Selection Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+       <div>
+        <label class="block text-sm font-medium mb-1" for="region-0">
+         Select Region
+        </label>
+        <select class="region-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="region-0" name="region[]" required="">
+         <option disabled="" selected="" value="">
+          Choose a region
+         </option>
+         <option value="europe">
+          Europe
+         </option>
+         <option value="northAmerica">
+          North America
+         </option>
+         <option value="asia">
+          Asia
+         </option>
+         <option value="australia">
+          Australia
+         </option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1">
+         Source of Funding
+        </label>
+        <div class="space-y-2">
+         <label class="flex items-center">
+          <input class="funding-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="funding-0" required="" type="radio" value="self"/>
+          <span class="ml-2 text-sm">
+           Self/Family Funded
+          </span>
+         </label>
+         <label class="flex items-center">
+          <input class="funding-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="funding-0" type="radio" value="sponsorship"/>
+          <span class="ml-2 text-sm">
+           Has Sponsorship
+          </span>
+         </label>
+        </div>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1" for="centre-0">
+         Centre/University Selection
+        </label>
+        <select class="centre-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="centre-0" name="centre[]" required="">
+         <option disabled="" selected="" value="">
+          Select centre/university
+         </option>
+         <option value="university1">
+          University of Example 1
+         </option>
+         <option value="university2">
+          University of Example 2
+         </option>
+         <option value="university3">
+          University of Example 3
+         </option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1" for="programType-0">
+         Type of Programme
+        </label>
+        <select class="program-type-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="programType-0" name="programType[]" required="">
+         <option disabled="" selected="" value="">
+          Select program type
+         </option>
+         <option value="undergraduate">
+          Undergraduate
+         </option>
+         <option value="postgraduate">
+          Postgraduate
+         </option>
+         <option value="diploma">
+          Diploma
+         </option>
+         <option value="Research(MRes)">
+          Research (MRes)
+         </option>
+         <option value="Research(DBA)">
+          Research (DBA)
+         </option>
+         <option value="Research(PhD)">
+          Research (PhD)
+         </option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1" for="program-0">
+         Select Program
+        </label>
+        <select class="program-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="program-0" name="program[]" required="">
+         <option disabled="" selected="" value="">
+          Choose a program
+         </option>
+         <option value="program1">
+          Program 1
+         </option>
+         <option value="program2">
+          Program 2
+         </option>
+         <option value="program3">
+          Program 3
+         </option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1" for="yearOfEntry-0">
+         Year of Entry
+        </label>
+        <select class="year-of-entry-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="yearOfEntry-0" name="yearOfEntry[]" required="">
+         <option disabled="" selected="" value="">
+          Select Year of Entry
+         </option>
+         <option value="Year 1">
+          Year 1
+         </option>
+         <option value="Year 2">
+          Year 2
+         </option>
+         <option value="Final Year">
+          Final Year
+         </option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1" for="startDate-0">
+         Course Start Date
+        </label>
+        <input class="start-date-input w-full rounded-lg bg-gray-100 border border-gray-200 text-gray-900 text-sm px-4 py-2.5" id="startDate-0" name="startDate[]" readonly="" type="text"/>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1">
+         English Language Preparation Required?
+        </label>
+        <div class="space-y-2">
+         <label class="flex items-center">
+          <input class="english-prep-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="englishPrep-0" required="" type="radio" value="yes"/>
+          <span class="ml-2 text-sm">
+           Yes
+          </span>
+         </label>
+         <label class="flex items-center">
+          <input class="english-prep-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="englishPrep-0" type="radio" value="no"/>
+          <span class="ml-2 text-sm">
+           No
+          </span>
+         </label>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+    <div class="flex justify-end mb-8">
+     <button class="flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 rounded-lg border border-blue-200 hover:border-blue-300 bg-blue-50 hover:bg-blue-100 transition-colors" id="addUniversityApplication" type="button">
+      <i class="fas fa-plus">
+      </i>
+      <span>
+       Add Another University
+      </span>
+     </button>
+    </div>
+    <!-- Student Details Section -->
+    <section aria-labelledby="studentDetailsHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+     <h2 class="text-lg font-semibold mb-6" id="studentDetailsHeading">
+      Student Details
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="title">
+        Title
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="title" name="title" required="">
+        <option disabled="" selected="" value="">
+         Select title
+        </option>
+        <option value="mr">
+         Mr
+        </option>
+        <option value="mrs">
+         Mrs
+        </option>
+        <option value="miss">
+         Miss
+        </option>
+        <option value="ms">
+         Ms
+        </option>
+        <option value="dr">
+         Dr
+        </option>
+        <option value="prof">
+         Prof
+        </option>
+        <option value="other">
+         Other
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="forenames">
+        Forenames
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="forenames" name="forenames" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="surname">
+        Surname/Family Name
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="surname" name="surname" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="otherNames">
+        Other Names
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="otherNames" name="otherNames" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="passportNo">
+        Passport No
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="passportNo" name="passportNo" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="gender">
+        Gender
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="gender" name="gender" required="">
+        <option disabled="" selected="" value="">
+         Select gender
+        </option>
+        <option value="male">
+         Male
+        </option>
+        <option value="female">
+         Female
+        </option>
+        <option value="other">
+         Other
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="dob">
+        Date of Birth
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="dob" name="dob" required="" type="date"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="addressLine1">
+        Address Line 1
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="addressLine1" name="addressLine1" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="addressLine2">
+        Address Line 2
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="addressLine2" name="addressLine2" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="addressLine3">
+        Address Line 3
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="addressLine3" name="addressLine3" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="stateProvinceCounty">
+        State/Province/County
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="stateProvinceCounty" name="stateProvinceCounty" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="domicileCountry">
+        Domicile/Country of Permanent Residence
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="domicileCountry" name="domicileCountry">
+        <option disabled="" selected="" value="">
+         Select domicile country
+        </option>
+        <option value="domicile1">
+         Domicile Option 1
+        </option>
+        <option value="domicile2">
+         Domicile Option 2
+        </option>
+        <option value="domicile3">
+         Domicile Option 3
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="country">
+        Country
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="country" name="country" required="">
+        <option disabled="" selected="" value="">
+         Select country
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="nationality">
+        Nationality
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="nationality" name="nationality" required="">
+        <option disabled="" selected="" value="">
+         Select nationality
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="placeOfBirth">
+        Place of Birth
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="placeOfBirth" name="placeOfBirth" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="countryOfBirth">
+        Country of Birth
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="countryOfBirth" name="countryOfBirth" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="ucasNo">
+        UCAS No.
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="ucasNo" name="ucasNo" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="residentialCategory">
+        Residential Category
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="residentialCategory" name="residentialCategory">
+        <option disabled="" selected="" value="">
+         Select residential category
+        </option>
+        <option value="option1">
+         Option 1
+        </option>
+        <option value="option2">
+         Option 2
+        </option>
+        <option value="option3">
+         Option 3
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="medicalCode">
+        Medical Code
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="medicalCode" name="medicalCode">
+        <option disabled="" selected="" value="">
+         Select medical code
+        </option>
+        <option value="option1">
+         Option 1
+        </option>
+        <option value="option2">
+         Option 2
+        </option>
+        <option value="option3">
+         Option 3
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="disabilityType">
+        Disability Type
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="disabilityType" name="disabilityType">
+        <option disabled="" selected="" value="">
+         Select disability type
+        </option>
+        <option value="option1">
+         Option 1
+        </option>
+        <option value="option2">
+         Option 2
+        </option>
+        <option value="option3">
+         Option 3
+        </option>
+       </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1">
+        Has the applicant studied in the UK before?
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="studiedUKBefore" name="studiedUKBefore">
+        <option disabled="" selected="" value="">
+         Select option
+        </option>
+        <option value="yes">
+         Yes
+        </option>
+        <option value="no">
+         No
+        </option>
+       </select>
+      </div>
+      <div class="mt-6">
+       <label class="block text-sm font-medium mb-1" for="counsellorName">
+        Counsellor's Name
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="counsellorName" name="counsellorName" readonly="" type="text" value="Mr. Hoque"/>
+      </div>
+     </div>
+    </section>
+	  <!-- Contact Details Section -->
+    <section aria-labelledby="contactDetailsHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+     <h2 class="text-lg font-semibold mb-6" id="contactDetailsHeading">
+      Contact Details
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="studentEmail">
+        Student Email
+       </label>
+       <div class="relative">
+        <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="studentEmail" name="studentEmail" placeholder="Enter email" required="" type="email"/>
+        <i class="fas fa-envelope absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none">
+        </i>
+       </div>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="confirmEmail">
+        Confirm Email
+       </label>
+       <div class="relative">
+        <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="confirmEmail" name="confirmEmail" placeholder="Re-enter email" required="" type="email"/>
+        <i class="fas fa-envelope absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none">
+        </i>
+       </div>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="primaryPhone">
+        Phone No.
+       </label>
+       <div class="relative">
+        <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="primaryPhone" name="primaryPhone" placeholder="Enter phone number" required="" type="tel"/>
+        <i class="fas fa-phone absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none">
+        </i>
+       </div>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="secondaryPhone">
+        Mobile No.
+       </label>
+       <div class="relative">
+        <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="secondaryPhone" name="secondaryPhone" placeholder="Enter mobile number" type="tel"/>
+        <i class="fas fa-phone absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none">
+        </i>
+       </div>
+      </div>
+     </div>
+    </section>
+    <!-- Parent/Emergency Contact Section -->
+    <section aria-labelledby="parentContactHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+     <h2 class="text-lg font-semibold mb-6" id="parentContactHeading">
+      Parent/Emergency Contact
+     </h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+       <label class="block text-sm font-medium mb-1" for="relation">
+        Relation to Student
+       </label>
+       <div class="relative">
+        <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="relation" name="relation" placeholder="Father/Mother/Other" required="" type="text"/>
+        <i class="fas fa-user-friends absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none">
+        </i>
+       </div>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="parentFullName">
+        Full Name
+       </label>
+       <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentFullName" name="parentFullName" placeholder="Enter full name" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="parentPhone">
+        Primary Telephone
+       </label>
+       <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentPhone" name="parentPhone" placeholder="Enter phone" required="" type="tel"/>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="parentAddress">
+        Address
+       </label>
+       <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentAddress" name="parentAddress" placeholder="Same as student or enter address" type="text"/>
+      </div>
+      <div class="md:col-span-2">
+       <label class="block text-sm font-medium mb-1" for="altEmail">
+        Alternative/Emergency Email
+       </label>
+       <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="altEmail" name="altEmail" placeholder="Enter email" type="email"/>
+      </div>
+     </div>
+    </section>
+    <!-- Education & Language Section -->
+    <section aria-labelledby="educationLanguageHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+     <h2 class="text-lg font-semibold mb-6" id="educationLanguageHeading">
+      Education &amp; Language
+     </h2>
+     <div class="space-y-6">
+      <div>
+       <label class="block text-sm font-medium mb-2">
+        Does the student hold any language qualification?
+       </label>
+       <div class="space-y-2">
+        <label class="flex items-center">
+         <input class="text-blue-600 focus:ring-blue-500 h-4 w-4" name="hasLanguageQual" type="radio" value="yes"/>
+         <span class="ml-2 text-sm">
+          Yes
+         </span>
+        </label>
+        <label class="flex items-center">
+         <input checked="" class="text-blue-600 focus:ring-blue-500 h-4 w-4" name="hasLanguageQual" type="radio" value="no"/>
+         <span class="ml-2 text-sm">
+          No
+         </span>
+        </label>
+       </div>
+      </div>
+      <div class="hidden" id="ieltsScores">
+       <h3 class="text-sm font-medium mb-4">
+        IELTS Scores
+       </h3>
+       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div>
+         <label class="block text-sm mb-1" for="listening">
+          Listening
+         </label>
+         <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="listening" max="9" min="0" name="listening" step="0.5" type="number"/>
+        </div>
+        <div>
+         <label class="block text-sm mb-1" for="reading">
+          Reading
+         </label>
+         <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="reading" max="9" min="0" name="reading" step="0.5" type="number"/>
+        </div>
+        <div>
+         <label class="block text-sm mb-1" for="speaking">
+          Speaking
+         </label>
+         <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="speaking" max="9" min="0" name="speaking" step="0.5" type="number"/>
+        </div>
+        <div>
+         <label class="block text-sm mb-1" for="writing">
+          Writing
+         </label>
+         <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="writing" max="9" min="0" name="writing" step="0.5" type="number"/>
+        </div>
+        <div>
+         <label class="block text-sm mb-1" for="overall">
+          Overall
+         </label>
+         <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="overall" max="9" min="0" name="overall" step="0.5" type="number"/>
+        </div>
+       </div>
+       <div class="mt-4">
+        <label class="block text-sm mb-1" for="cefrLevel">
+         CEFR Level
+        </label>
+        <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="cefrLevel" name="cefrLevel">
+         <option disabled="" selected="" value="">
+          Select CEFR level
+         </option>
+         <option value="A1">
+          A1
+         </option>
+         <option value="A2">
+          A2
+         </option>
+         <option value="B1">
+          B1
+         </option>
+         <option value="B2">
+          B2
+         </option>
+         <option value="C1">
+          C1
+         </option>
+         <option value="C2">
+          C2
+         </option>
+        </select>
+       </div>
+      </div>
+     </div>
+    </section>
+    <!-- Education History Section -->
+    <section aria-labelledby="educationHistoryHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+     <h2 class="text-lg font-semibold mb-6" id="educationHistoryHeading">
+      Education History
+     </h2>
+     <div class="space-y-6" id="educationHistory">
+      <div class="education-entry border border-gray-300 rounded-lg p-4 relative">
+       <button aria-label="Remove this education entry" class="absolute top-2 right-2 text-red-600 hover:text-red-800 text-sm font-medium remove-education-entry hidden" type="button">
+        <i class="fas fa-times">
+        </i>
+       </button>
+       <h3 class="text-md font-semibold mb-4 education-entry-title">
+        Educational Entry 1
+       </h3>
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+         <label class="block text-sm font-medium mb-1" for="institutionName-0">
+          Institution Name
+         </label>
+         <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="institutionName-0" name="institutionName[]" required="" type="text"/>
+        </div>
+        <div>
+         <label class="block text-sm font-medium mb-1" for="institutionCountry-0">
+          Institution Country
+         </label>
+         <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="institutionCountry-0" name="institutionCountry[]" required="">
+          <option disabled="" selected="" value="">
+           Select country
+          </option>
+         </select>
+        </div>
+        <div>
+         <label class="block text-sm font-medium mb-1" for="courseStudied-0">
+          Course Studied
+         </label>
+         <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="courseStudied-0" name="courseStudied[]" required="" type="text"/>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+         <div>
+          <label class="block text-sm font-medium mb-1" for="dateFrom-0">
+           Date From
+          </label>
+          <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="dateFrom-0" name="dateFrom[]" required="" type="date"/>
+         </div>
+         <div>
+          <label class="block text-sm font-medium mb-1" for="dateTo-0">
+           Date To
+          </label>
+          <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="dateTo-0" name="dateTo[]" required="" type="date"/>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="flex justify-between items-center mt-4">
+      <button class="flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 rounded-lg border border-blue-200 hover:border-blue-300 bg-blue-50 hover:bg-blue-100 transition-colors" id="addMoreEducation" type="button">
+       <i class="fas fa-plus">
+       </i>
+       <span>
+        Add More Education Info
+       </span>
+      </button>
+      <button class="flex items-center gap-2 px-4 py-2 text-red-600 hover:text-red-700 rounded-lg border border-red-200 hover:border-red-300 bg-red-50 hover:bg-red-100 transition-colors hidden" id="removeLastEducation" type="button">
+       <i class="fas fa-minus">
+       </i>
+       <span>
+        Remove Last Education Entry
+       </span>
+      </button>
+     </div>
+     <div class="mt-6">
+      <label class="block text-lg font-semibold mb-4">
+       Required Documents
+      </label>
+      <div id="documentsContainer" class="space-y-4">
+       <div class="document-upload-section bg-gray-50 border border-gray-200 rounded-lg p-4 relative">
+        <button aria-label="Remove this document upload section" class="absolute top-2 right-2 text-red-600 hover:text-red-800 text-sm font-medium remove-document-section hidden" type="button">
+         <i class="fas fa-times">
+         </i>
+        </button>
+        <div class="mb-3">
+         <label class="block text-sm font-medium mb-2">
+          Select Document Type*
+         </label>
+         <select class="document-type w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" required="">
+          <option disabled="" selected="" value="">
+           Choose document type
+          </option>
+          <option value="passport">
+           Passport
+          </option>
+          <option value="ielts">
+           IELTS Certificate
+          </option>
+          <option value="educational">
+           Educational Certificate
+          </option>
+          <option value="transcript">
+           Academic Transcript
+          </option>
+          <option value="cv">
+           CV/Resume
+          </option>
+          <option value="other">
+           Other Document
+          </option>
+         </select>
+         <input class="mt-2 w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 hidden other-document-name" placeholder="Enter document name" type="text"/>
+        </div>
+        <div class="upload-zone border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors relative">
+         <input accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" class="hidden document-input" required="" type="file"/>
+         <div class="flex flex-col items-center gap-2">
+          <i class="fas fa-cloud-upload-alt text-3xl text-blue-500">
+          </i>
+          <p class="text-gray-600">
+           Drop your file here, or
+           <span class="text-blue-500">
+            browse
+           </span>
+          </p>
+          <p class="text-xs text-gray-400">
+           Maximum file size: 10MB
+          </p>
+         </div>
+         <div class="file-preview mt-3 hidden flex flex-col items-center">
+          <p class="file-name text-sm text-blue-600 font-medium mb-2">
+          </p>
+          <button aria-label="Remove uploaded file" class="remove-file text-red-600 hover:text-red-800" type="button" title="Remove file">
+           <i class="fas fa-trash-alt text-lg">
+           </i>
+          </button>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex justify-end mt-4">
+       <button class="flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 rounded-lg border border-blue-200 hover:border-blue-300 bg-blue-50 hover:bg-blue-100 transition-colors" id="addMoreDocuments" type="button">
+        <i class="fas fa-plus">
+        </i>
+        <span>
+         Add More Document
+        </span>
+       </button>
+      </div>
+     </div>
+    </section>
+    <!-- Action Buttons -->
+    <div class="flex justify-end space-x-4">
+     <button class="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" type="button">
+      Save as Draft
+     </button>
+     <button class="px-6 py-2.5 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" type="submit">
+      Submit Application
+     </button>
+    </div>
+   </form>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 pt-8 pb-7 w-full" role="contentinfo">
+   <div class="max-w-[1600px] mx-auto px-4 sm:px-10 flex flex-col items-center justify-center gap-2">
+    <div class="flex gap-4 mb-3">
+     <a class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" href="#" title="Facebook">
+      <i class="fab fa-facebook-f text-blue-600 text-lg">
+      </i>
+     </a>
+     <a class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" href="#" title="Twitter">
+      <i class="fab fa-twitter text-blue-500 text-lg">
+      </i>
+     </a>
+     <a class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" href="#" title="LinkedIn">
+      <i class="fab fa-linkedin-in text-blue-700 text-lg">
+      </i>
+     </a>
+     <a class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" href="#" title="Instagram">
+      <i class="fab fa-instagram text-pink-500 text-lg">
+      </i>
+     </a>
+    </div>
+    <div class="text-xs text-gray-400 text-center">
+     © EduConnect 2025. All rights reserved.
+    </div>
+   </div>
+  </footer>
+  <script>
+   // Toggle NAV active highlight on click (both desktop and mobile)
+      function setActiveMenu(link, allLinks) {
+        allLinks.forEach((el) => {
+          el.classList.remove("active-menu");
+          el.classList.remove("active-bg");
+        });
+        link.classList.add("active-menu");
+        link.classList.add("active-bg");
+      }
+
+      // Mobile menu controls
+      document.addEventListener("DOMContentLoaded", function () {
+        // Desktop nav
+        const menuLinks = document.querySelectorAll(".nav-menu-link");
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            setActiveMenu(this, menuLinks);
+          });
+        });
+
+        // Mobile menu controls
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+        const mobileMenuButton = document.getElementById("mobileMenuButton");
+        const closeMobileMenu = document.getElementById("closeMobileMenu");
+
+        function openMobileMenu() {
+          mobileMenuOverlay.classList.remove("hidden");
+          mobileMenu.classList.remove("translate-x-full");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+          mobileMenuOverlay.classList.add("hidden");
+          mobileMenu.classList.add("translate-x-full");
+          document.body.style.overflow = "";
+        }
+
+        mobileMenuButton.addEventListener("click", openMobileMenu);
+        closeMobileMenu.addEventListener("click", closeMenu);
+        mobileMenuOverlay.addEventListener("click", closeMenu);
+
+        // Mobile nav active - sync with desktop nav
+        const currentPath = window.location.pathname;
+        [
+          { id: "dashboard-link-m", href: "AgentDashboard.html" },
+          { id: "applications-link-m", href: "ApplicationDash.html" },
+        ].forEach((item) => {
+          const link = document.getElementById(item.id);
+          if (link) {
+            // Set initial active state based on current page
+            if (item.href === currentPath) {
+              link.classList.add("active-menu", "active-bg");
+            }
+            // Add click handler
+            link.addEventListener("click", function () {
+              const mobileLinks = Array.from(
+                link.parentNode.querySelectorAll(".nav-menu-link")
+              );
+              setActiveMenu(link, mobileLinks);
+              // Also update desktop nav if it exists
+              const desktopLink = document.getElementById(
+                item.id.replace("-m", "")
+              );
+              if (desktopLink) {
+                const desktopLinks = Array.from(
+                  desktopLink.parentNode.parentNode.querySelectorAll(
+                    ".nav-menu-link"
+                  )
+                );
+                setActiveMenu(desktopLink, desktopLinks);
+              }
+            });
+          }
+        });
+      });
+
+      // Show/Hide IELTS scores section based on language qualification selection
+      document.querySelectorAll('input[name="hasLanguageQual"]').forEach((radio) => {
+        radio.addEventListener("change", function () {
+          const ieltsScores = document.getElementById("ieltsScores");
+          if (this.value === "yes") {
+            ieltsScores.classList.remove("hidden");
+          } else {
+            ieltsScores.classList.add("hidden");
+          }
+        });
+      });
+
+      // Add more education entries
+      const educationHistory = document.getElementById("educationHistory");
+      const addMoreEducationBtn = document.getElementById("addMoreEducation");
+      const removeLastEducationBtn = document.getElementById("removeLastEducation");
+
+      function updateEducationEntryTitles() {
+        const entries = educationHistory.querySelectorAll(".education-entry");
+        entries.forEach((entry, idx) => {
+          const title = entry.querySelector(".education-entry-title");
+          if (title) {
+            title.textContent = `Educational Entry ${idx + 1}`;
+          }
+          const removeBtn = entry.querySelector(".remove-education-entry");
+          if (removeBtn) {
+            if (entries.length === 1) {
+              removeBtn.classList.add("hidden");
+            } else {
+              removeBtn.classList.remove("hidden");
+            }
+          }
+          // Update IDs and names for inputs/selects
+          entry.querySelectorAll("input, select").forEach((el) => {
+            if (el.id) {
+              const baseId = el.id.replace(/-\d+$/, "");
+              el.id = `${baseId}-${idx}`;
+            }
+            if (el.name) {
+              if (el.name.endsWith("[]")) {
+                // keep array names as is
+              } else {
+                el.name = el.name.replace(/\[\]$/, "") + "[]";
+              }
+            }
+          });
+        });
+        // Show or hide remove last education button
+        if (entries.length > 1) {
+          removeLastEducationBtn.classList.remove("hidden");
+        } else {
+          removeLastEducationBtn.classList.add("hidden");
+        }
+      }
+
+      addMoreEducationBtn.addEventListener("click", () => {
+        const firstEntry = educationHistory.querySelector(".education-entry");
+        const newEntry = firstEntry.cloneNode(true);
+
+        // Clear inputs/selects
+        newEntry.querySelectorAll("input").forEach((input) => (input.value = ""));
+        newEntry.querySelectorAll("select").forEach((select) => (select.selectedIndex = 0));
+
+        educationHistory.appendChild(newEntry);
+        updateEducationEntryTitles();
+      });
+
+      removeLastEducationBtn.addEventListener("click", () => {
+        const entries = educationHistory.querySelectorAll(".education-entry");
+        if (entries.length > 1) {
+          entries[entries.length - 1].remove();
+          updateEducationEntryTitles();
+        }
+      });
+
+      educationHistory.addEventListener("click", (e) => {
+        if (e.target.closest(".remove-education-entry")) {
+          const entry = e.target.closest(".education-entry");
+          if (entry) {
+            entry.remove();
+            updateEducationEntryTitles();
+          }
+        }
+      });
+
+      // Populate institutionCountry selects initially and on new education entry
+      (function populateInstitutionCountries() {
+        const countries = [
+          "Afghanistan",
+          "Albania",
+          "Algeria",
+          "Andorra",
+          "Angola",
+          "Antigua and Barbuda",
+          "Argentina",
+          "Armenia",
+          "Australia",
+          "Austria",
+          "Azerbaijan",
+          "Bahamas",
+          "Bahrain",
+          "Bangladesh",
+          "Barbados",
+          "Belarus",
+          "Belgium",
+          "Belize",
+          "Benin",
+          "Bhutan",
+          "Bolivia",
+          "Bosnia and Herzegovina",
+          "Botswana",
+          "Brazil",
+          "Brunei",
+          "Bulgaria",
+          "Burkina Faso",
+          "Burundi",
+          "Cabo Verde",
+          "Cambodia",
+          "Cameroon",
+          "Canada",
+          "Central African Republic",
+          "Chad",
+          "Chile",
+          "China",
+          "Colombia",
+          "Comoros",
+          "Congo",
+          "Costa Rica",
+          "Croatia",
+          "Cuba",
+          "Cyprus",
+          "Czechia",
+          "Democratic Republic of the Congo",
+          "Denmark",
+          "Djibouti",
+          "Dominica",
+          "Dominican Republic",
+          "Ecuador",
+          "Egypt",
+          "El Salvador",
+          "Equatorial Guinea",
+          "Eritrea",
+          "Estonia",
+          "Eswatini",
+          "Ethiopia",
+          "Fiji",
+          "Finland",
+          "France",
+          "Gabon",
+          "Gambia",
+          "Georgia",
+          "Germany",
+          "Ghana",
+          "Greece",
+          "Grenada",
+          "Guatemala",
+          "Guinea",
+          "Guinea-Bissau",
+          "Guyana",
+          "Haiti",
+          "Holy See",
+          "Honduras",
+          "Hungary",
+          "Iceland",
+          "India",
+          "Indonesia",
+          "Iran",
+          "Iraq",
+          "Ireland",
+          "Israel",
+          "Italy",
+          "Jamaica",
+          "Japan",
+          "Jordan",
+          "Kazakhstan",
+          "Kenya",
+          "Kiribati",
+          "Kuwait",
+          "Kyrgyzstan",
+          "Laos",
+          "Latvia",
+          "Lebanon",
+          "Lesotho",
+          "Liberia",
+          "Libya",
+          "Liechtenstein",
+          "Lithuania",
+          "Luxembourg",
+          "Madagascar",
+          "Malawi",
+          "Malaysia",
+          "Maldives",
+          "Mali",
+          "Malta",
+          "Marshall Islands",
+          "Mauritania",
+          "Mauritius",
+          "Mexico",
+          "Micronesia",
+          "Moldova",
+          "Monaco",
+          "Mongolia",
+          "Montenegro",
+          "Morocco",
+          "Mozambique",
+          "Myanmar",
+          "Namibia",
+          "Nauru",
+          "Nepal",
+          "Netherlands",
+          "New Zealand",
+          "Nicaragua",
+          "Niger",
+          "Nigeria",
+          "North Korea",
+          "North Macedonia",
+          "Norway",
+          "Oman",
+          "Pakistan",
+          "Palau",
+          "Palestine State",
+          "Panama",
+          "Papua New Guinea",
+          "Paraguay",
+          "Peru",
+          "Philippines",
+          "Poland",
+          "Portugal",
+          "Qatar",
+          "Romania",
+          "Russia",
+          "Rwanda",
+          "Saint Kitts and Nevis",
+          "Saint Lucia",
+          "Saint Vincent and the Grenadines",
+          "Samoa",
+          "San Marino",
+          "Sao Tome and Principe",
+          "Saudi Arabia",
+          "Senegal",
+          "Serbia",
+          "Seychelles",
+          "Sierra Leone",
+          "Singapore",
+          "Slovakia",
+          "Slovenia",
+          "Solomon Islands",
+          "Somalia",
+          "South Africa",
+          "South Korea",
+          "South Sudan",
+          "Spain",
+          "Sri Lanka",
+          "Sudan",
+          "Suriname",
+          "Sweden",
+          "Switzerland",
+          "Syria",
+          "Tajikistan",
+          "Tanzania",
+          "Thailand",
+          "Timor-Leste",
+          "Togo",
+          "Tonga",
+          "Trinidad and Tobago",
+          "Tunisia",
+          "Turkey",
+          "Turkmenistan",
+          "Tuvalu",
+          "Uganda",
+          "Ukraine",
+          "United Arab Emirates",
+          "United Kingdom",
+          "United States of America",
+          "Uruguay",
+          "Uzbekistan",
+          "Vanuatu",
+          "Venezuela",
+          "Vietnam",
+          "Yemen",
+          "Zambia",
+          "Zimbabwe",
+        ];
+        function populateSelect(select) {
+          select.innerHTML = '<option value="" selected disabled>Select country</option>';
+          countries.forEach((country) => {
+            const opt = document.createElement("option");
+            opt.value = country;
+            opt.textContent = country;
+            select.appendChild(opt);
+          });
+        }
+        // Initial population
+        document.querySelectorAll("select[name='institutionCountry[]']").forEach(populateSelect);
+
+        // Observe for new education entries added dynamically
+        const observer = new MutationObserver(() => {
+          document.querySelectorAll("select[name='institutionCountry[]']").forEach(populateSelect);
+        });
+        observer.observe(educationHistory, { childList: true });
+      })();
+
+      // Documents section logic
+      const documentsContainer = document.getElementById("documentsContainer");
+      const addMoreDocumentsBtn = document.getElementById("addMoreDocuments");
+
+      function createDocumentSection() {
+        const div = document.createElement("div");
+        div.className = "document-upload-section bg-gray-50 border border-gray-200 rounded-lg p-4 relative";
+
+        div.innerHTML = `
+          <button type="button" aria-label="Remove this document upload section" class="absolute top-2 right-2 text-red-600 hover:text-red-800 text-sm font-medium remove-document-section">
+            <i class="fas fa-times"></i>
+          </button>
+          <div class="mb-3">
+            <label class="block text-sm font-medium mb-2">Select Document Type*</label>
+            <select class="document-type w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+              <option value="" selected disabled>Choose document type</option>
+              <option value="passport">Passport</option>
+              <option value="ielts">IELTS Certificate</option>
+              <option value="educational">Educational Certificate</option>
+              <option value="transcript">Academic Transcript</option>
+              <option value="cv">CV/Resume</option>
+              <option value="other">Other Document</option>
+            </select>
+            <input type="text" placeholder="Enter document name" class="mt-2 w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 hidden other-document-name" />
+          </div>
+          <div class="upload-zone border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors relative">
+            <input type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" class="hidden document-input" required />
+            <div class="flex flex-col items-center gap-2">
+              <i class="fas fa-cloud-upload-alt text-3xl text-blue-500"></i>
+              <p class="text-gray-600">Drop your file here, or <span class="text-blue-500">browse</span></p>
+              <p class="text-xs text-gray-400">Maximum file size: 10MB</p>
+            </div>
+            <div class="file-preview mt-3 hidden flex flex-col items-center">
+              <p class="file-name text-sm text-blue-600 font-medium mb-2"></p>
+              <button type="button" aria-label="Remove uploaded file" class="remove-file text-red-600 hover:text-red-800" title="Remove file">
+                <i class="fas fa-trash-alt text-lg"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        return div;
+      }
+
+      addMoreDocumentsBtn.addEventListener("click", () => {
+        const newDocSection = createDocumentSection();
+        documentsContainer.appendChild(newDocSection);
+      });
+
+      // Delegate events for documentsContainer
+      documentsContainer.addEventListener("change", (e) => {
+        if (e.target.classList.contains("document-type")) {
+          const select = e.target;
+          const otherNameInput = select.parentElement.querySelector(".other-document-name");
+          if (select.value === "other") {
+            otherNameInput.classList.remove("hidden");
+            otherNameInput.required = true;
+          } else {
+            otherNameInput.classList.add("hidden");
+            otherNameInput.required = false;
+            otherNameInput.value = "";
+          }
+        }
+        if (e.target.classList.contains("document-input")) {
+          const input = e.target;
+          const filePreview = input.parentElement.querySelector(".file-preview");
+          const fileNameElem = filePreview.querySelector(".file-name");
+          if (input.files.length > 0) {
+            fileNameElem.textContent = input.files[0].name;
+            filePreview.classList.remove("hidden");
+          } else {
+            filePreview.classList.add("hidden");
+            fileNameElem.textContent = "";
+          }
+        }
+      });
+
+      documentsContainer.addEventListener("click", (e) => {
+        if (e.target.closest(".remove-file")) {
+          const btn = e.target.closest(".remove-file");
+          const filePreview = btn.closest(".file-preview");
+          const uploadZone = filePreview.parentElement;
+          const input = uploadZone.querySelector(".document-input");
+          input.value = "";
+          filePreview.classList.add("hidden");
+          filePreview.querySelector(".file-name").textContent = "";
+        }
+        if (e.target.closest(".upload-zone")) {
+          const uploadZone = e.target.closest(".upload-zone");
+          const input = uploadZone.querySelector(".document-input");
+          input.click();
+        }
+        if (e.target.closest(".remove-document-section")) {
+          const section = e.target.closest(".document-upload-section");
+          if (section) {
+            section.remove();
+          }
+        }
+      });
+
+      // Initial setup for first document section
+      document.addEventListener("DOMContentLoaded", () => {
+        updateEducationEntryTitles();
+      });
+
+      // Update course start date when program is selected (for all university applications)
+      function updateStartDate(select) {
+        const startDateInput = select
+          .closest(".university-application")
+          .querySelector(".start-date-input");
+        if (startDateInput) {
+          // Placeholder logic: set a fixed date or could be dynamic based on program
+          startDateInput.value = "September 2024";
+        }
+      }
+
+      document.addEventListener("change", function (e) {
+        if (e.target.classList.contains("program-select")) {
+          updateStartDate(e.target);
+        }
+      });
+
+      // Add multiple university applications
+      const addUniversityBtn = document.getElementById("addUniversityApplication");
+      const universityApplicationsContainer = document.getElementById(
+        "universityApplicationsContainer"
+      );
+
+      addUniversityBtn.addEventListener("click", () => {
+        const currentCount = universityApplicationsContainer.querySelectorAll(
+          ".university-application"
+        ).length;
+        const newIndex = currentCount;
+
+        // Clone the first university application section
+        const firstApplication = universityApplicationsContainer.querySelector(
+          ".university-application"
+        );
+        const newApplication = firstApplication.cloneNode(true);
+
+        // Update heading and show remove button
+        const heading = newApplication.querySelector("h2");
+        heading.textContent = `University Application ${newIndex + 1}`;
+
+        const removeBtn = newApplication.querySelector(".remove-university-application");
+        removeBtn.classList.remove("hidden");
+
+        // Clear all inputs/selects and update IDs and names with new index
+        newApplication.querySelectorAll("input, select").forEach((el) => {
+          if (el.type === "radio" || el.type === "checkbox") {
+            el.checked = false;
+          } else {
+            el.value = "";
+          }
+          // Update id attribute with new index if present
+          if (el.id) {
+            const baseId = el.id.replace(/-\d+$/, "");
+            el.id = `${baseId}-${newIndex}`;
+          }
+          // Update name attribute for radios to keep grouping by index
+          if (el.name) {
+            // For radios, name must be unique per group per university application
+            if (el.type === "radio") {
+              const baseName = el.name.replace(/-\d+$/, "");
+              el.name = `${baseName}-${newIndex}`;
+            } else if (el.name.endsWith("[]")) {
+              // keep array names as is
+            } else {
+              const baseName = el.name.replace(/\[\]$/, "");
+              el.name = `${baseName}[]`;
+            }
+          }
+        });
+
+        // Append new application
+        universityApplicationsContainer.appendChild(newApplication);
+      });
+
+      // Remove university application
+      universityApplicationsContainer.addEventListener("click", (e) => {
+        if (e.target.closest(".remove-university-application")) {
+          const applicationSection = e.target.closest(".university-application");
+          if (applicationSection) {
+            applicationSection.remove();
+
+            // Re-label remaining applications
+            const applications = universityApplicationsContainer.querySelectorAll(
+              ".university-application"
+            );
+            applications.forEach((app, idx) => {
+              const heading = app.querySelector("h2");
+              heading.textContent = `University Application ${idx + 1}`;
+              const removeBtn = app.querySelector(".remove-university-application");
+              if (applications.length === 1) {
+                removeBtn.classList.add("hidden");
+              } else {
+                removeBtn.classList.remove("hidden");
+              }
+            });
+          }
+        }
+      });
+
+      // Profile Menu Toggle
+      document.addEventListener("DOMContentLoaded", function () {
+        const profileButton = document.getElementById("profileButton");
+        const profileMenu = document.getElementById("profileMenu");
+
+        // Toggle menu on profile button click
+        profileButton.addEventListener("click", function (e) {
+          e.stopPropagation();
+          profileMenu.classList.toggle("hidden");
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (e) {
+          if (!profileButton.contains(e.target)) {
+            profileMenu.classList.add("hidden");
+          }
+        });
+
+        // Logout handler
+        window.handleLogout = function () {
+          // Add any cleanup logic here (e.g., clearing session storage)
+          window.location.href = "../Login.html"; // Redirect to login page
+        };
+      });
+
+      (function () {
+        const countries = [
+          "Afghanistan",
+          "Albania",
+          "Algeria",
+          "Andorra",
+          "Angola",
+          "Antigua and Barbuda",
+          "Argentina",
+          "Armenia",
+          "Australia",
+          "Austria",
+          "Azerbaijan",
+          "Bahamas",
+          "Bahrain",
+          "Bangladesh",
+          "Barbados",
+          "Belarus",
+          "Belgium",
+          "Belize",
+          "Benin",
+          "Bhutan",
+          "Bolivia",
+          "Bosnia and Herzegovina",
+          "Botswana",
+          "Brazil",
+          "Brunei",
+          "Bulgaria",
+          "Burkina Faso",
+          "Burundi",
+          "Cabo Verde",
+          "Cambodia",
+          "Cameroon",
+          "Canada",
+          "Central African Republic",
+          "Chad",
+          "Chile",
+          "China",
+          "Colombia",
+          "Comoros",
+          "Congo",
+          "Costa Rica",
+          "Croatia",
+          "Cuba",
+          "Cyprus",
+          "Czechia",
+          "Democratic Republic of the Congo",
+          "Denmark",
+          "Djibouti",
+          "Dominica",
+          "Dominican Republic",
+          "Ecuador",
+          "Egypt",
+          "El Salvador",
+          "Equatorial Guinea",
+          "Eritrea",
+          "Estonia",
+          "Eswatini",
+          "Ethiopia",
+          "Fiji",
+          "Finland",
+          "France",
+          "Gabon",
+          "Gambia",
+          "Georgia",
+          "Germany",
+          "Ghana",
+          "Greece",
+          "Grenada",
+          "Guatemala",
+          "Guinea",
+          "Guinea-Bissau",
+          "Guyana",
+          "Haiti",
+          "Holy See",
+          "Honduras",
+          "Hungary",
+          "Iceland",
+          "India",
+          "Indonesia",
+          "Iran",
+          "Iraq",
+          "Ireland",
+          "Israel",
+          "Italy",
+          "Jamaica",
+          "Japan",
+          "Jordan",
+          "Kazakhstan",
+          "Kenya",
+          "Kiribati",
+          "Kuwait",
+          "Kyrgyzstan",
+          "Laos",
+          "Latvia",
+          "Lebanon",
+          "Lesotho",
+          "Liberia",
+          "Libya",
+          "Liechtenstein",
+          "Lithuania",
+          "Luxembourg",
+          "Madagascar",
+          "Malawi",
+          "Malaysia",
+          "Maldives",
+          "Mali",
+          "Malta",
+          "Marshall Islands",
+          "Mauritania",
+          "Mauritius",
+          "Mexico",
+          "Micronesia",
+          "Moldova",
+          "Monaco",
+          "Mongolia",
+          "Montenegro",
+          "Morocco",
+          "Mozambique",
+          "Myanmar",
+          "Namibia",
+          "Nauru",
+          "Nepal",
+          "Netherlands",
+          "New Zealand",
+          "Nicaragua",
+          "Niger",
+          "Nigeria",
+          "North Korea",
+          "North Macedonia",
+          "Norway",
+          "Oman",
+          "Pakistan",
+          "Palau",
+          "Palestine State",
+          "Panama",
+          "Papua New Guinea",
+          "Paraguay",
+          "Peru",
+          "Philippines",
+          "Poland",
+          "Portugal",
+          "Qatar",
+          "Romania",
+          "Russia",
+          "Rwanda",
+          "Saint Kitts and Nevis",
+          "Saint Lucia",
+          "Saint Vincent and the Grenadines",
+          "Samoa",
+          "San Marino",
+          "Sao Tome and Principe",
+          "Saudi Arabia",
+          "Senegal",
+          "Serbia",
+          "Seychelles",
+          "Sierra Leone",
+          "Singapore",
+          "Slovakia",
+          "Slovenia",
+          "Solomon Islands",
+          "Somalia",
+          "South Africa",
+          "South Korea",
+          "South Sudan",
+          "Spain",
+          "Sri Lanka",
+          "Sudan",
+          "Suriname",
+          "Sweden",
+          "Switzerland",
+          "Syria",
+          "Tajikistan",
+          "Tanzania",
+          "Thailand",
+          "Timor-Leste",
+          "Togo",
+          "Tonga",
+          "Trinidad and Tobago",
+          "Tunisia",
+          "Turkey",
+          "Turkmenistan",
+          "Tuvalu",
+          "Uganda",
+          "Ukraine",
+          "United Arab Emirates",
+          "United Kingdom",
+          "United States of America",
+          "Uruguay",
+          "Uzbekistan",
+          "Vanuatu",
+          "Venezuela",
+          "Vietnam",
+          "Yemen",
+          "Zambia",
+          "Zimbabwe",
+        ];
+        const selectCountry = document.getElementById("country");
+        const selectInstitutionCountry = document.querySelectorAll(
+          "select[name='institutionCountry[]']"
+        );
+        countries.forEach((country) => {
+          const opt = document.createElement("option");
+          opt.value = country;
+          opt.textContent = country;
+          selectCountry.appendChild(opt);
+        });
+
+        // Also populate institutionCountry selects initially
+        selectInstitutionCountry.forEach((select) => {
+          countries.forEach((country) => {
+            const opt = document.createElement("option");
+            opt.value = country;
+            opt.textContent = country;
+            select.appendChild(opt.cloneNode(true));
+          });
+        });
+      })();
+
+      (function () {
+        // List of demonyms (nationalities)
+        const nationalities = [
+          "Afghan",
+          "Albanian",
+          "Algerian",
+          "Andorran",
+          "Angolan",
+          "Antiguan or Barbudan",
+          "Argentine",
+          "Armenian",
+          "Australian",
+          "Austrian",
+          "Azerbaijani",
+          "Bahamian",
+          "Bahraini",
+          "Bangladeshi",
+          "Barbadian",
+          "Belarusian",
+          "Belgian",
+          "Belizean",
+          "Beninese",
+          "Bhutanese",
+          "Bolivian",
+          "Bosnian or Herzegovinian",
+          "Motswana",
+          "Brazilian",
+          "Bruneian",
+          "Bulgarian",
+          "Burkinabé",
+          "Burundian",
+          "Cape Verdean",
+          "Cambodian",
+          "Cameroonian",
+          "Canadian",
+          "Central African",
+          "Chadian",
+          "Chilean",
+          "Chinese",
+          "Colombian",
+          "Comoran",
+          "Congolese (Congo-Brazzaville)",
+          "Costa Rican",
+          "Croatian",
+          "Cuban",
+          "Cypriot",
+          "Czech",
+          "Congolese (Congo-Kinshasa)",
+          "Danish",
+          "Djiboutian",
+          "Dominican (Dominica)",
+          "Dominican (Dominican Republic)",
+          "Ecuadorian",
+          "Egyptian",
+          "Salvadoran",
+          "Equatorial Guinean",
+          "Eritrean",
+          "Estonian",
+          "Swazi",
+          "Ethiopian",
+          "Fijian",
+          "Finnish",
+          "French",
+          "Gabonese",
+          "Gambian",
+          "Georgian",
+          "German",
+          "Ghanaian",
+          "Greek",
+          "Grenadian",
+          "Guatemalan",
+          "Guinean",
+          "Bissau-Guinean",
+          "Guyanese",
+          "Haitian",
+          "Holy See Citizen",
+          "Honduran",
+          "Hungarian",
+          "Icelandic",
+          "Indian",
+          "Indonesian",
+          "Iranian",
+          "Iraqi",
+          "Irish",
+          "Israeli",
+          "Italian",
+          "Jamaican",
+          "Japanese",
+          "Jordanian",
+          "Kazakh",
+          "Kenyan",
+          "I-Kiribati",
+          "Kuwaiti",
+          "Kyrgyz",
+          "Lao",
+          "Latvian",
+          "Lebanese",
+          "Basotho",
+          "Liberian",
+          "Libyan",
+          "Liechtensteiner",
+          "Lithuanian",
+          "Luxembourger",
+          "Malagasy",
+          "Malawian",
+          "Malaysian",
+          "Maldivian",
+          "Malian",
+          "Maltese",
+          "Marshallese",
+          "Mauritanian",
+          "Mauritian",
+          "Mexican",
+          "Micronesian",
+          "Moldovan",
+          "Monégasque",
+          "Mongolian",
+          "Montenegrin",
+          "Moroccan",
+          "Mozambican",
+          "Burmese",
+          "Namibian",
+          "Nauruan",
+          "Nepalese",
+          "Dutch",
+          "New Zealander",
+          "Nicaraguan",
+          "Nigerien",
+          "Nigerian",
+          "North Korean",
+          "Macedonian",
+          "Norwegian",
+          "Omani",
+          "Pakistani",
+          "Palauan",
+          "Palestinian",
+          "Panamanian",
+          "Papua New Guinean",
+          "Paraguayan",
+          "Peruvian",
+          "Filipino",
+          "Polish",
+          "Portuguese",
+          "Qatari",
+          "Romanian",
+          "Russian",
+          "Rwandan",
+          "Kittitian or Nevisian",
+          "Saint Lucian",
+          "Vincentian",
+          "Samoan",
+          "San Marinese",
+          "São Toméan",
+          "Saudi",
+          "Senegalese",
+          "Serbian",
+          "Seychellois",
+          "Sierra Leonean",
+          "Singaporean",
+          "Slovak",
+          "Slovene",
+          "Solomon Islander",
+          "Somali",
+          "South African",
+          "South Korean",
+          "South Sudanese",
+          "Spanish",
+          "Sri Lankan",
+          "Sudanese",
+          "Surinamese",
+          "Swedish",
+          "Swiss",
+          "Syrian",
+          "Tajik",
+          "Tanzanian",
+          "Thai",
+          "Timorese",
+          "Togolese",
+          "Tongan",
+          "Trinidadian or Tobagonian",
+          "Tunisian",
+          "Turkish",
+          "Turkmen",
+          "Tuvaluan",
+          "Ugandan",
+          "Ukrainian",
+          "Emirati",
+          "British",
+          "American",
+          "Uruguayan",
+          "Uzbek",
+          "Vanuatuan",
+          "Venezuelan",
+          "Vietnamese",
+          "Yemeni",
+          "Zambian",
+          "Zimbabwean",
+        ];
+        const selectNationality = document.getElementById("nationality");
+        nationalities.forEach((nationality) => {
+          const option = document.createElement("option");
+          option.value = nationality;
+          option.textContent = nationality;
+          selectNationality.appendChild(option);
+        });
+      })();
+  </script>
+ </body>
+</html>

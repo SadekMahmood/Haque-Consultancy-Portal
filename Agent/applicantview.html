@@ -1,0 +1,469 @@
+<html lang="en">
+  <head>
+    <title>Agent Dashboard | EduConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .active-menu {
+        color: #2563eb !important;
+      }
+      .active-bg {
+        background-color: #e0e7ff !important;
+      }
+      .transition-transform {
+        transition: transform 0.25s;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-[#18181b] min-h-screen flex flex-col">
+    <!-- Topbar -->
+    <header class="w-full border-b border-gray-200 bg-white flex items-center h-16 z-30 relative">
+      <nav class="flex flex-1 items-center px-4 md:px-12 w-full relative">
+        <span class="font-bold text-lg pr-5 md:pr-8 select-none whitespace-nowrap">EduConnect</span>
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex text-base flex-1 gap-2 lg:gap-6 items-center ml-1">
+          <li>
+            <a href="AgentDashboard.html" class="flex items-center gap-1 text-gray-700 font-medium py-2 px-3 transition-colors rounded-lg nav-menu-link" id="dashboard-link">
+              <i class="fas fa-th-large text-gray-500"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="ApplicationDash.html" class="flex items-center gap-1 text-gray-700 font-medium py-2 px-3 transition-colors rounded-lg nav-menu-link hover:bg-blue-50" id="applications-link">
+              <i class="fas fa-folder-open text-gray-500"></i>
+              <span>Applications</span>
+            </a>
+          </li>
+        </ul>
+        <div class="flex-1 md:hidden"></div>
+        <!-- Right quick buttons -->
+        <div class="flex items-center gap-2 ml-auto">
+          <a href="help.html" class="hidden md:inline-block px-3 py-1.5 rounded-lg text-blue-600 bg-blue-100 font-medium hover:bg-blue-200 text-sm">Help</a>
+          <a href="NewApplication.html" class="px-3 md:px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm shadow transition">New Application</a>
+          <!-- Profile Menu -->
+<div class="relative ml-2">
+  <button id="profileButton" class="h-9 w-9 rounded-full overflow-hidden border border-gray-300 flex-shrink-0 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&amp;w=100&amp;h=100&amp;fit=facearea&amp;facepad=2.0" alt="Profile" class="w-full h-full object-cover"/>
+  </button>
+  <!-- Profile Dropdown Menu -->
+  <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 border border-gray-100 z-50">
+    <a href="profile.html" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-50">
+      <i class="fas fa-user w-5"></i>
+      <span>Profile</span>
+    </a>
+   
+    <div class="border-t border-gray-100 my-1"></div>
+    <a href="Login.html" class="flex items-center px-4 py-2 text-red-600 hover:bg-gray-50" onclick="handleLogout()">
+      <i class="fas fa-sign-out-alt w-5"></i>
+      <span>Logout</span>
+    </a>
+  </div>
+</div>
+          <!-- Hamburger mobile menu -->
+          <button id="mobileMenuButton" class="md:hidden ml-1 h-9 w-9 flex items-center justify-center rounded-lg active:bg-gray-100" aria-label="Open menu">
+            <i class="fas fa-bars text-xl text-gray-600"></i>
+          </button>
+        </div>
+        <!-- Mobile menu overlay -->
+        <div id="mobileMenuOverlay" class="fixed inset-0 z-50 bg-black/30 hidden"></div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="fixed top-0 right-0 w-64 max-w-full h-full bg-white shadow-lg z-50 flex flex-col p-5 gap-2 transform translate-x-full transition-transform duration-300 md:hidden" style="transition:transform .3s;">
+          <div class="flex w-full justify-between items-center mb-5">
+            <span class="font-bold text-lg">Menu</span>
+            <button id="closeMobileMenu" class="text-gray-500 hover:text-blue-700 h-8 w-8 flex items-center justify-center rounded-md">
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <a href="AgentDashboard.html" class="flex gap-2 items-center py-3 px-3 rounded-lg nav-menu-link" id="dashboard-link-m">
+            <i class="fas fa-th-large text-gray-500"></i>
+            Dashboard
+          </a>
+          <a href="ApplicationDash.html" class="flex gap-2 items-center py-3 px-3 rounded-lg nav-menu-link hover:bg-blue-50" id="applications-link-m">
+            <i class="fas fa-folder-open text-gray-500"></i>
+            Applications
+          </a>
+          <div class="border-t border-gray-200 my-4"></div>
+          <a href="help.html" class="px-3 py-2 rounded-lg text-blue-600 bg-blue-100 font-medium hover:bg-blue-200 text-sm">Help</a>
+          <a href="NewApplication.html" class="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm shadow transition">New Application</a>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-1 px-2 sm:px-4 md:px-10 lg:px-12 pb-8 pt-6 bg-gray-50 w-full mx-auto max-w-[1600px]">
+      <section class="mb-10 max-w-5xl mx-auto w-full">
+       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 gap-2">
+        <h1 class="text-2xl font-bold">Applicant Profile</h1>
+      </div>
+      <div class="text-gray-500 mb-7 text-sm md:text-base">Personal details and application progress</div>
+        <!-- University Application 1 -->
+        <div aria-label="University Application 1" class="bg-white p-6 rounded-lg shadow border border-gray-200 mb-6">
+          <h3 class="text-xl font-semibold mb-4">University Application 1</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+            <div><span class="font-semibold text-gray-900">Region:</span> <span class="font-light text-gray-700">Europe</span></div>
+            <div><span class="font-semibold text-gray-900">Source of Funding:</span> <span class="font-light text-gray-700">Self/Family Funded</span></div>
+            <div><span class="font-semibold text-gray-900">Centre/University:</span> <span class="font-light text-gray-700">University of Example 1</span></div>
+            <div><span class="font-semibold text-gray-900">Type of Programme:</span> <span class="font-light text-gray-700">Undergraduate</span></div>
+            <div><span class="font-semibold text-gray-900">Program:</span> <span class="font-light text-gray-700">Program 1</span></div>
+            <div><span class="font-semibold text-gray-900">Year of Entry:</span> <span class="font-light text-gray-700">Year 1</span></div>
+            <div><span class="font-semibold text-gray-900">Course Start Date:</span> <span class="font-light text-gray-700">September 2024</span></div>
+            <div><span class="font-semibold text-gray-900">English Language Preparation Required:</span> <span class="font-light text-gray-700">Yes</span></div>
+          </div>
+        </div>
+        <!-- University Application 2 -->
+        <div aria-label="University Application 2" class="bg-white p-6 rounded-lg shadow border border-gray-200 mb-6">
+          <h3 class="text-xl font-semibold mb-4">University Application 2</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+            <div><span class="font-semibold text-gray-900">Region:</span> <span class="font-light text-gray-700">Asia</span></div>
+            <div><span class="font-semibold text-gray-900">Source of Funding:</span> <span class="font-light text-gray-700">Has Sponsorship</span></div>
+            <div><span class="font-semibold text-gray-900">Centre/University:</span> <span class="font-light text-gray-700">University of Example 3</span></div>
+            <div><span class="font-semibold text-gray-900">Type of Programme:</span> <span class="font-light text-gray-700">Postgraduate</span></div>
+            <div><span class="font-semibold text-gray-900">Program:</span> <span class="font-light text-gray-700">Program 3</span></div>
+            <div><span class="font-semibold text-gray-900">Year of Entry:</span> <span class="font-light text-gray-700">Final Year</span></div>
+            <div><span class="font-semibold text-gray-900">Course Start Date:</span> <span class="font-light text-gray-700">September 2024</span></div>
+            <div><span class="font-semibold text-gray-900">English Language Preparation Required:</span> <span class="font-light text-gray-700">No</span></div>
+          </div>
+        </div>
+      </section>
+      <!-- Student Details -->
+      <section class="mb-10 bg-white p-6 rounded-lg shadow border border-gray-200 max-w-5xl mx-auto w-full">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Student Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+          <div><span class="font-semibold text-gray-900">Title:</span> <span class="font-light text-gray-700">Mr</span></div>
+          <div><span class="font-semibold text-gray-900">Forenames:</span> <span class="font-light text-gray-700">John Michael</span></div>
+          <div><span class="font-semibold text-gray-900">Surname/Family Name:</span> <span class="font-light text-gray-700">Smith</span></div>
+          <div><span class="font-semibold text-gray-900">Other Names:</span> <span class="font-light text-gray-700">Alexander</span></div>
+          <div><span class="font-semibold text-gray-900">Passport No:</span> <span class="font-light text-gray-700">A12345678</span></div>
+          <div><span class="font-semibold text-gray-900">Gender:</span> <span class="font-light text-gray-700">Male</span></div>
+          <div><span class="font-semibold text-gray-900">Date of Birth:</span> <span class="font-light text-gray-700">1998-05-15</span></div>
+          <div><span class="font-semibold text-gray-900">Address Line 1:</span> <span class="font-light text-gray-700">123 Main Street</span></div>
+          <div><span class="font-semibold text-gray-900">Address Line 2:</span> <span class="font-light text-gray-700">Apartment 4B</span></div>
+          <div><span class="font-semibold text-gray-900">Address Line 3:</span> <span class="font-light text-gray-700">Downtown</span></div>
+          <div><span class="font-semibold text-gray-900">State/Province/County:</span> <span class="font-light text-gray-700">California</span></div>
+          <div><span class="font-semibold text-gray-900">Domicile/Country of Permanent Residence:</span> <span class="font-light text-gray-700">Domicile Option 1</span></div>
+          <div><span class="font-semibold text-gray-900">Country:</span> <span class="font-light text-gray-700">United States of America</span></div>
+          <div><span class="font-semibold text-gray-900">Nationality:</span> <span class="font-light text-gray-700">American</span></div>
+          <div><span class="font-semibold text-gray-900">Place of Birth:</span> <span class="font-light text-gray-700">Los Angeles</span></div>
+          <div><span class="font-semibold text-gray-900">Country of Birth:</span> <span class="font-light text-gray-700">United States of America</span></div>
+          <div><span class="font-semibold text-gray-900">UCAS No.:</span> <span class="font-light text-gray-700">987654321</span></div>
+          <div><span class="font-semibold text-gray-900">Residential Category:</span> <span class="font-light text-gray-700">Option 2</span></div>
+          <div><span class="font-semibold text-gray-900">Medical Code:</span> <span class="font-light text-gray-700">Option 1</span></div>
+          <div><span class="font-semibold text-gray-900">Disability Type:</span> <span class="font-light text-gray-700">Option 3</span></div>
+          <div><span class="font-semibold text-gray-900">Has the applicant studied in the UK before?:</span> <span class="font-light text-gray-700">Yes</span></div>
+          <div class="md:col-span-2"><span class="font-semibold text-gray-900">Counsellor's Name:</span> <span class="font-light text-gray-700">Mr. Hoque</span></div>
+        </div>
+      </section>
+      <!-- Contact Details -->
+      <section class="mb-10 bg-white p-6 rounded-lg shadow border border-gray-200 max-w-5xl mx-auto w-full">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Contact Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+          <div><span class="font-semibold text-gray-900">Student Email:</span> <span class="font-light text-gray-700">john.smith@example.com</span></div>
+          <div><span class="font-semibold text-gray-900">Confirm Email:</span> <span class="font-light text-gray-700">john.smith@example.com</span></div>
+          <div><span class="font-semibold text-gray-900">Phone No.:</span> <span class="font-light text-gray-700">+1 555-123-4567</span></div>
+          <div><span class="font-semibold text-gray-900">Mobile No.:</span> <span class="font-light text-gray-700">+1 555-987-6543</span></div>
+        </div>
+      </section>
+      <!-- Parent/Emergency Contact -->
+      <section class="mb-10 bg-white p-6 rounded-lg shadow border border-gray-200 max-w-5xl mx-auto w-full">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Parent/Emergency Contact</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+          <div><span class="font-semibold text-gray-900">Relation to Student:</span> <span class="font-light text-gray-700">Father</span></div>
+          <div><span class="font-semibold text-gray-900">Full Name:</span> <span class="font-light text-gray-700">Robert Smith</span></div>
+          <div><span class="font-semibold text-gray-900">Primary Telephone:</span> <span class="font-light text-gray-700">+1 555-222-3333</span></div>
+          <div><span class="font-semibold text-gray-900">Address:</span> <span class="font-light text-gray-700">123 Main Street, Apartment 4B, Downtown</span></div>
+          <div class="md:col-span-2"><span class="font-semibold text-gray-900">Alternative/Emergency Email:</span> <span class="font-light text-gray-700">robert.smith@example.com</span></div>
+        </div>
+      </section>
+      <!-- Education & Language -->
+      <section class="mb-10 bg-white p-6 rounded-lg shadow border border-gray-200 max-w-5xl mx-auto w-full">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Education &amp; Language</h2>
+        <div class="text-gray-700 space-y-4">
+          <div><span class="font-semibold text-gray-900">Does the student hold any language qualification?:</span> <span class="font-light text-gray-700">Yes</span></div>
+          <div><span class="font-semibold text-gray-900">Language Score Name:</span> <span class="font-light text-gray-700">IELTS</span></div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div><span class="font-semibold text-gray-900">Listening:</span> <span class="font-light text-gray-700">7.5</span></div>
+            <div><span class="font-semibold text-gray-900">Reading:</span> <span class="font-light text-gray-700">8.0</span></div>
+            <div><span class="font-semibold text-gray-900">Speaking:</span> <span class="font-light text-gray-700">7.0</span></div>
+            <div><span class="font-semibold text-gray-900">Writing:</span> <span class="font-light text-gray-700">7.5</span></div>
+            <div class="md:col-span-4"><span class="font-semibold text-gray-900">Overall:</span> <span class="font-light text-gray-700">7.5</span></div>
+          </div>
+          <div><span class="font-semibold text-gray-900">CEFR Level:</span> <span class="font-light text-gray-700">B2</span></div>
+        </div>
+      </section>
+      <!-- Education History -->
+      <section class="mb-10 bg-white p-6 rounded-lg shadow border border-gray-200 max-w-5xl mx-auto w-full">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Education History</h2>
+        <!-- Education Entry 1 -->
+        <div class="mb-8 border-b border-gray-200 pb-6 text-gray-700">
+          <h3 class="text-xl font-semibold mb-4">Education Entry 1</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div><span class="font-semibold text-gray-900">Institution Name:</span> <span class="font-light text-gray-700">Example High School</span></div>
+            <div><span class="font-semibold text-gray-900">Institution Country:</span> <span class="font-light text-gray-700">United States of America</span></div>
+            <div><span class="font-semibold text-gray-900">Course Studied:</span> <span class="font-light text-gray-700">Science</span></div>
+            <div><span class="font-semibold text-gray-900">Date From:</span> <span class="font-light text-gray-700">2012-09-01</span></div>
+            <div><span class="font-semibold text-gray-900">Date To:</span> <span class="font-light text-gray-700">2016-06-30</span></div>
+          </div>
+        </div>
+        <!-- Education Entry 2 -->
+        <div class="mb-8 border-b border-gray-200 pb-6 text-gray-700">
+          <h3 class="text-xl font-semibold mb-4">Education Entry 2</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div><span class="font-semibold text-gray-900">Institution Name:</span> <span class="font-light text-gray-700">Example University</span></div>
+            <div><span class="font-semibold text-gray-900">Institution Country:</span> <span class="font-light text-gray-700">United Kingdom</span></div>
+            <div><span class="font-semibold text-gray-900">Course Studied:</span> <span class="font-light text-gray-700">Computer Science</span></div>
+            <div><span class="font-semibold text-gray-900">Date From:</span> <span class="font-light text-gray-700">2016-09-01</span></div>
+            <div><span class="font-semibold text-gray-900">Date To:</span> <span class="font-light text-gray-700">2020-06-30</span></div>
+          </div>
+        </div>
+        <!-- Required Documents -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-gray-800">Submitted Documents</h3>
+          <div class="space-y-4">
+            <!-- Document 1 -->
+            <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 flex items-center justify-between gap-4">
+              <div><span class="font-semibold text-gray-900">Document Title:</span> <span class="font-light text-gray-700">Passport</span></div>
+            
+            </div>
+            <!-- Document 2 -->
+            <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 flex items-center justify-between gap-4">
+              <div><span class="font-semibold text-gray-900">Document Title:</span> <span class="font-light text-gray-700">IELTS Certificate</span></div>
+              
+            </div>
+            <!-- Document 3 -->
+            <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 flex items-center justify-between gap-4">
+              <div><span class="font-semibold text-gray-900">Document Title:</span> <span class="font-light text-gray-700">Academic Transcript</span></div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="max-w-5xl mx-auto mt-10 px-6 w-full">
+        <p class="mb-2 text-lg">
+          UA 1 Current Status: <strong>Information required</strong>
+        </p>
+        <p class="mb-2 text-lg">
+          UA 2 Current Status: <strong>Pending</strong>
+        </p>
+
+        <label for="comments" class="block mb-1 text-lg">Comments for Admin:</label>
+        <textarea id="comments" rows="8" class="w-full border border-gray-300 text-lg mb-6 resize-y rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+        <button type="submit" class="text-lg bg-gray-200 border border-gray-400 rounded px-6 py-3 cursor-pointer hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
+          Submit
+        </button>
+
+        <div class="mt-8 overflow-x-auto">
+          <p class="mb-1 text-lg font-bold text-blue-800">History Log</p>
+          <table class="w-full border border-gray-400 text-lg border-collapse">
+            <thead>
+              <tr class="bg-gray-700 text-white text-lg">
+                <th class="border border-gray-400 px-6 text-left font-semibold">UA No.</th>
+                <th class="border border-gray-400 px-6 text-left font-semibold">Intake</th>
+                <th class="border border-gray-400 px-6 text-left font-semibold">Course Name</th>
+                <th class="border border-gray-400 px-6 text-left font-semibold">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-400 px-6">1</td>
+                <td class="border border-gray-400 px-6">January 2024</td>
+                <td class="border border-gray-400 px-6">International Business MA</td>
+                <td class="border border-gray-400 px-6">2023-09-13</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-6 overflow-x-auto">
+          <p class="mb-1 text-lg font-bold text-blue-800">Comment Log:</p>
+          <table class="w-full border border-gray-400 text-lg border-collapse">
+            <thead>
+              <tr class="bg-gray-700 text-white text-lg">
+                <th class="border border-gray-400 px-6 text-left font-semibold">Comment</th>
+                <th class="border border-gray-400 px-6 text-left font-semibold">Commented On</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-400 px-6">Kindly provide verification link for bachelor degree done</td>
+                <td class="border border-gray-400 px-6">14-09-2023</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-6 overflow-x-auto">
+          <p class="mb-1 text-lg font-bold text-blue-800">Status Log (University Application 1):</p>
+          <table class="w-full border border-gray-400 text-lg border-collapse">
+            <thead>
+              <tr class="bg-gray-700 text-white text-lg">
+                <th class="border border-gray-400 px-6 text-left font-semibold">Status</th>
+                <th class="border border-gray-400 px-6 text-left font-semibold">Updated On</th>
+                <th class="border border-gray-400 px-6 text-left font-semibold">Conditions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-400 px-6">Pending</td>
+                <td class="border border-gray-400 px-6">13-09-2023</td>
+                <td class="border border-gray-400 px-6"></td>
+              </tr>
+              <tr>
+                <td class="border border-gray-400 px-6">Information required</td>
+                <td class="border border-gray-400 px-6">14-09-2023</td>
+                <td class="border border-gray-400 px-6"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-6 overflow-x-auto">
+          <p class="mb-1 text-lg font-bold text-blue-800">Status Log (University Application 2):</p>
+          <table class="w-full border border-gray-400 text-lg border-collapse">
+            <thead>
+              <tr class="bg-gray-700 text-white text-lg">
+                <th class="border border-gray-400 px-6 text-left font-semibold">Status</th>
+                <th class="border border-gray-400 px-6 text-left font-semibold">Updated On</th>
+                <th class="border border-gray-400 px-6 text-left font-semibold">Conditions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-400 px-6">Approved</td>
+                <td class="border border-gray-400 px-6">15-09-2023</td>
+                <td class="border border-gray-400 px-6">None</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-400 px-6">Pending Documents</td>
+                <td class="border border-gray-400 px-6">16-09-2023</td>
+                <td class="border border-gray-400 px-6">Verification needed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-gray-200 pt-8 pb-7 w-full">
+      <div class="max-w-[1600px] mx-auto px-4 sm:px-10 flex flex-col items-center justify-center gap-2">
+        <div class="flex gap-4 mb-3">
+          <a href="#" class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" title="Facebook"><i class="fab fa-facebook-f text-blue-600 text-lg"></i></a>
+          <a href="#" class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" title="Twitter"><i class="fab fa-twitter text-blue-500 text-lg"></i></a>
+          <a href="#" class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" title="LinkedIn"><i class="fab fa-linkedin-in text-blue-700 text-lg"></i></a>
+          <a href="#" class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" title="Instagram"><i class="fab fa-instagram text-pink-500 text-lg"></i></a>
+        </div>
+        <div class="text-xs text-gray-400 text-center">© EduConnect 2025. All rights reserved.</div>
+      </div>
+    </footer>
+    <script>
+      // Toggle NAV active highlight on click (both desktop and mobile)
+      function setActiveMenu(link, allLinks) {
+        allLinks.forEach(el => {
+          el.classList.remove('active-menu');
+          el.classList.remove('active-bg');
+        });
+        link.classList.add('active-menu');
+        link.classList.add('active-bg');
+      }
+
+      // Scroll spy to highlight active section
+      function handleScroll() {
+        const sections = document.querySelectorAll('section');
+        if (sections.length === 0) {
+          // No sections to scroll spy on, do not override active menu
+          return;
+        }
+        const navLinks = document.querySelectorAll('.nav-menu-link');
+
+        let currentSection = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.scrollY >= (sectionTop - 100) && window.scrollY < (sectionTop + sectionHeight - 100)) {
+            currentSection = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active-menu');
+          link.classList.remove('active-bg');
+          if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active-menu');
+            link.classList.add('active-bg');
+          }
+        });
+
+        // If no section matched, highlight Dashboard menu by default
+        if (!currentSection) {
+          const dashboardLink = document.getElementById('dashboard-link');
+          const dashboardLinkMobile = document.getElementById('dashboard-link-m');
+          dashboardLink.classList.remove('active-menu', 'active-bg');
+          dashboardLinkMobile.classList.remove('active-menu', 'active-bg');
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        // Desktop nav
+        const menuLinks = document.querySelectorAll('.nav-menu-link');
+        menuLinks.forEach(link => {
+          link.addEventListener('click', function (e) {
+            setActiveMenu(this, menuLinks);
+          });
+        });
+
+        // Mobile menu controls
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        function openMobileMenu() {
+          mobileMenuOverlay.classList.remove('hidden');
+          mobileMenu.classList.remove('translate-x-full');
+          document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+          mobileMenuOverlay.classList.add('hidden');
+          mobileMenu.classList.add('translate-x-full');
+          document.body.style.overflow = '';
+        }
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenu.addEventListener('click', closeMenu);
+        mobileMenuOverlay.addEventListener('click', closeMenu);
+      });
+
+      // Profile Menu Toggle
+      document.addEventListener('DOMContentLoaded', function() {
+        const profileButton = document.getElementById('profileButton');
+        const profileMenu = document.getElementById('profileMenu');
+        
+        // Toggle menu on profile button click
+        profileButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+          profileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!profileButton.contains(e.target)) {
+            profileMenu.classList.add('hidden');
+          }
+        });
+        
+        // Logout handler
+        window.handleLogout = function() {
+          window.location.href = '../Login.html'; // Redirect to login page
+        };
+      });
+    </script>
+  </body>
+</html>

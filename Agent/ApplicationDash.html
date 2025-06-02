@@ -1,0 +1,422 @@
+<html>
+  <head>
+    <title>Applications Dashboard | EduConnect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .active-menu {
+        color: #2563eb !important;
+      }
+      .active-bg {
+        background-color: #e0e7ff !important;
+      }
+      .transition-transform {
+        transition: transform 0.25s;
+      }
+      /* Added for scroll spy */
+      .section {
+        min-height: 100vh;
+        padding-top: 80px;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-[#18181b] min-h-screen flex flex-col">
+    <!-- Topbar -->
+    <header class="w-full border-b border-gray-200 bg-white flex items-center h-16 z-30 fixed top-0">
+      <nav class="flex flex-1 items-center px-4 md:px-12 w-full relative">
+        <span class="font-bold text-lg pr-5 md:pr-8 select-none whitespace-nowrap">EduConnect</span>
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex text-base flex-1 gap-2 lg:gap-6 items-center ml-1">
+          <li>
+            <a href="AgentDashboard.html" class="flex items-center gap-1 text-gray-700 font-medium py-2 px-3 transition-colors rounded-lg nav-menu-link" id="dashboard-link">
+              <i class="fas fa-th-large text-gray-500"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#applications" class="flex items-center gap-1 text-gray-700 font-medium py-2 px-3 transition-colors rounded-lg nav-menu-link active-menu active-bg" id="applications-link">
+              <i class="fas fa-folder-open text-gray-500"></i>
+              <span>Applications</span>
+            </a>
+          </li>
+        </ul>
+        <div class="flex-1 md:hidden"></div>
+        <!-- Right quick buttons -->
+        <div class="flex items-center gap-2 ml-auto">
+          <a href="help.html" class="hidden md:inline-block px-3 py-1.5 rounded-lg text-blue-600 bg-blue-100 font-medium hover:bg-blue-200 text-sm">Help</a>
+          <a href="NewApplication.html" class="px-3 md:px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm shadow transition">New Application</a>
+          <!-- Profile Menu -->
+<div class="relative ml-2">
+  <button id="profileButton" class="h-9 w-9 rounded-full overflow-hidden border border-gray-300 flex-shrink-0 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&w=100&h=100&fit=facearea&facepad=2.0" alt="Profile" class="w-full h-full object-cover"/>
+  </button>
+  <!-- Profile Dropdown Menu -->
+  <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 border border-gray-100 z-50">
+    <a href="profile.html" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-50">
+      <i class="fas fa-user w-5"></i>
+      <span>Profile</span>
+    </a>
+    <div class="border-t border-gray-100 my-1"></div>
+    <a href="#" class="flex items-center px-4 py-2 text-red-600 hover:bg-gray-50" onclick="handleLogout()">
+      <i class="fas fa-sign-out-alt w-5"></i>
+      <span>Logout</span>
+    </a>
+  </div>
+</div>
+          <!-- Hamburger mobile menu -->
+          <button id="mobileMenuButton" class="md:hidden ml-1 h-9 w-9 flex items-center justify-center rounded-lg active:bg-gray-100" aria-label="Open menu">
+            <i class="fas fa-bars text-xl text-gray-600"></i>
+          </button>
+        </div>
+        <!-- Mobile menu overlay -->
+        <div id="mobileMenuOverlay" class="fixed inset-0 z-50 bg-black/30 hidden"></div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="fixed top-0 right-0 w-64 max-w-full h-full bg-white shadow-lg z-50 flex flex-col p-5 gap-2 transform translate-x-full transition-transform duration-300 md:hidden" style="transition:transform .3s;">
+          <div class="flex w-full justify-between items-center mb-5">
+            <span class="font-bold text-lg">Menu</span>
+            <button id="closeMobileMenu" class="text-gray-500 hover:text-blue-700 h-8 w-8 flex items-center justify-center rounded-md">
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <a href="AgentDashboard.html" class="flex gap-2 items-center py-3 px-3 rounded-lg nav-menu-link" id="dashboard-link-m">
+            <i class="fas fa-th-large text-gray-500"></i>
+            Dashboard
+          </a>
+          <a href="#applications" class="flex gap-2 items-center py-3 px-3 rounded-lg nav-menu-link active-menu active-bg" id="applications-link-m">
+            <i class="fas fa-folder-open text-gray-500"></i>
+            Applications
+          </a>
+          <div class="border-t border-gray-200 my-4"></div>
+          <a href="help.html" class="px-3 py-2 rounded-lg text-blue-600 bg-blue-100 font-medium hover:bg-blue-200 text-sm">Help</a>
+          <a href="NewApplication.html" class="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm shadow transition">New Application</a>
+        </div>
+      </nav>
+    </header>
+    
+    <!-- Main content with sections for each menu item -->
+    <main class="flex-1 mt-16">
+
+    
+      
+      <!-- Applications Section (the main content from original) -->
+      <section id="applications" class="section bg-gray-50 px-2 sm:px-4 md:px-10 lg:px-12 pb-8 pt-6">
+        <!-- Breadcrumbs -->
+        <nav class="flex text-sm text-gray-400 mb-6 pt-2" aria-label="Breadcrumb">
+          <ol class="flex space-x-2 items-center overflow-x-auto">
+            <li><a href="#" class="hover:underline text-gray-500">Dashboard</a></li>
+            <li><i class="fas fa-chevron-right text-xs mx-1"></i></li>
+            <li class="text-gray-700 font-semibold">Applications</li>
+          </ol>
+        </nav>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 gap-2">
+          <h1 class="text-2xl font-bold">Applications Dashboard</h1>
+        </div>
+        <div class="text-gray-500 mb-7 text-sm md:text-base">Overview of all student applications and their current status</div>
+        <!-- Info Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mb-8 max-w-full">
+          <div class="bg-blue-50 rounded-xl p-3 md:p-4 flex flex-col gap-1">
+            <div class="flex items-center mb-2">
+              <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl"><i class="fas fa-file-alt"></i></div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900">42</div>
+            <div class="text-gray-700 text-base font-medium">Total Applications</div>
+            <div class="text-gray-400 text-xs">12 new this month</div>
+          </div>
+          <div class="bg-blue-50 rounded-xl p-3 md:p-4 flex flex-col gap-1">
+            <div class="flex items-center mb-2">
+              <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl"><i class="fas fa-upload"></i></div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900">18</div>
+            <div class="text-gray-700 text-base font-medium">Submitted</div>
+            <div class="text-gray-400 text-xs">Recently submitted</div>
+          </div>
+          <div class="bg-blue-50 rounded-xl p-3 md:p-4 flex flex-col gap-1">
+            <div class="flex items-center mb-2">
+              <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl"><i class="fas fa-hourglass-half"></i></div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900">7</div>
+            <div class="text-gray-700 text-base font-medium">Pending</div>
+            <div class="text-gray-400 text-xs">Awaiting response</div>
+          </div>
+          <div class="bg-blue-50 rounded-xl p-3 md:p-4 flex flex-col gap-1">
+            <div class="flex items-center mb-2">
+              <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl"><i class="fas fa-bolt"></i></div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900">5</div>
+            <div class="text-gray-700 text-base font-medium">Rejected</div>
+            <div class="text-gray-400 text-xs">Ready for payment</div>
+          </div>
+          <div class="bg-blue-50 rounded-xl p-3 md:p-4 flex flex-col gap-1">
+            <div class="flex items-center mb-2">
+              <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl"><i class="fas fa-check-circle"></i></div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900">3</div>
+            <div class="text-gray-700 text-base font-medium">Accepted </div>
+            <div class="text-gray-400 text-xs">Visa approved</div>
+          </div>
+        </div>
+        <!-- Tabs -->
+        <div class="mb-2 border-b border-gray-200 overflow-x-auto scrollbar-hide">
+          <nav class="flex flex-nowrap gap-4 items-center text-sm font-semibold">
+            <button class="h-12 px-4 border-b-2 border-blue-600 text-blue-600 bg-transparent rounded-t-md">All Applications</button>
+          </nav>
+        </div>
+        <!-- Search & Sort -->
+        <div class="flex flex-col md:flex-row items-stretch md:items-center gap-3 mb-6 mt-2">
+          <!-- Search Bar -->
+          <div class="relative rounded-lg bg-blue-50 border border-blue-300 w-full md:w-2/5 lg:w-1/4 shadow-inner">
+            <input type="text" placeholder="Search applicants by name, ID, email, course, university..." class="bg-transparent p-3 pl-4 pr-10 w-full text-sm outline-none rounded-lg text-blue-900 placeholder-blue-600" />
+            <span class="absolute top-1/2 right-3 -translate-y-1/2 text-blue-600"><i class="fas fa-search"></i></span>
+          </div>
+          
+          <!-- DOB Filter -->
+          <div class="relative rounded-lg bg-blue-50 border border-blue-300 w-full md:w-1/5 lg:w-1/6 shadow-inner">
+            <input type="date" placeholder="Filter by DOB" class="bg-transparent p-3 pl-4 pr-4 w-full text-sm outline-none rounded-lg text-blue-900 placeholder-blue-600" />
+          </div>
+        </div>
+        <!-- Application List Table -->
+			 <div class="overflow-x-auto rounded-lg mb-8 border border-gray-200 shadow-md">
+        <div class="min-w-[900px] bg-white p-6 rounded-lg">
+          <h2 class="text-3xl font-extrabold text-blue-700 mb-6 select-none">Application List</h2>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="text-sm text-gray-500 border-b border-gray-300 bg-blue-50">
+                <th class="py-3 px-4 font-semibold tracking-wide">APP ID</th>
+                <th class="py-3 px-4 font-semibold tracking-wide">Title</th>
+                <th class="py-3 px-4 font-semibold tracking-wide">First Name</th>
+                <th class="py-3 px-4 font-semibold tracking-wide">Family Name</th>
+				<th class="py-3 px-4 font-semibold tracking-wide">Nationality</th>
+                <th class="py-3 px-4 font-semibold tracking-wide">Universities</th>
+                <th class="py-3 px-4 font-semibold tracking-wide">Courses</th>
+                <th class="py-3 px-4 font-semibold tracking-wide">Start Date</th>
+                <th class="py-3 px-4 font-semibold tracking-wide">Application Status</th>
+                <th class="py-3 px-4 font-semibold tracking-wide">Updated</th>
+                <th class="py-3 px-4 font-semibold tracking-wide text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700 text-sm">
+              <tr class="border-b border-gray-200 hover:bg-blue-50 transition">
+                <td class="py-3 px-4 font-medium">100512</td>
+                <td class="py-3 px-4">Mr.</td>
+                <td class="py-3 px-4">John</td>
+                <td class="py-3 px-4">Michael</td>
+				<td class="py-3 px-4">American</td>
+                <td class="py-3 px-4">University of Toronto</td>
+                <td class="py-3 px-4">Computer Science, Data Science</td>
+                <td class="py-3 px-4">Sep 2025</td>
+                <td class="py-3 px-4">Application Submitted</td>
+                <td class="py-3 px-4">2 min ago</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <a href="applicantview.html" title="View"><button class="text-gray-500 hover:text-blue-600"><i class="fas fa-eye"></i></button></a>
+                </td>
+              </tr>
+              <tr class="border-b border-gray-200 hover:bg-blue-50 transition">
+                <td class="py-3 px-4 font-medium">100499</td>
+                <td class="py-3 px-4">Mr.</td>
+                <td class="py-3 px-4">James</td>
+                <td class="py-3 px-4">Chen</td>
+				<td class="py-3 px-4">Chinse</td>
+                <td class="py-3 px-4">MIT</td>
+                <td class="py-3 px-4">Electrical Engineering</td>
+                <td class="py-3 px-4">Jan 2026</td>
+                <td class="py-3 px-4">Conditional Offer Received</td>
+                 <td class="py-3 px-4">1 day ago</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <button class="text-gray-500 hover:text-blue-600" title="View"><i class="fas fa-eye"></i></button>
+                </td>
+              </tr>
+              <tr class="border-b border-gray-200 hover:bg-blue-50 transition">
+                <td class="py-3 px-4 font-medium">100421</td>
+                <td class="py-3 px-4">Ms.</td>
+                <td class="py-3 px-4">Sophia</td>
+                <td class="py-3 px-4">Rodriguez</td>
+				<td class="py-3 px-4">Mexican</td>
+                <td class="py-3 px-4">Oxford University</td>
+                <td class="py-3 px-4">Business Administration</td>
+                <td class="py-3 px-4">Sep 2026</td>
+                <td class="py-3 px-4">Unconditional Offer Received</td>
+                <td class="py-3 px-4">2 min ago</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <button class="text-gray-500 hover:text-blue-600" title="View"><i class="fas fa-eye"></i></button>
+                </td>
+              </tr>
+              <tr class="border-b border-gray-200 hover:bg-blue-50 transition">
+                <td class="py-3 px-4 font-medium">100350</td>
+                <td class="py-3 px-4">Mr.</td>
+                <td class="py-3 px-4">Michael</td>
+                <td class="py-3 px-4">Kim</td>
+				<td class="py-3 px-4">Korean</td>
+                <td class="py-3 px-4">University of Melbourne</td>
+                <td class="py-3 px-4">Mechanical Engineering</td>
+                <td class="py-3 px-4">June 2026</td>
+                <td class="py-3 px-4">Payment Cleared</td>
+                <td class="py-3 px-4">2 min ago</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <button class="text-gray-500 hover:text-blue-600" title="View"><i class="fas fa-eye"></i></button>
+                </td>
+              </tr>
+              <tr class="border-b border-gray-200 hover:bg-blue-50 transition">
+                <td class="py-3 px-4 font-medium">100280</td>
+                <td class="py-3 px-4">Ms.</td>
+                <td class="py-3 px-4">Olivia</td>
+                <td class="py-3 px-4">Johnson</td>
+				<td class="py-3 px-4">Australian</td>
+                <td class="py-3 px-4">ETH Zurich</td>
+                <td class="py-3 px-4">Physics</td>
+                <td class="py-3 px-4">DEC 2025</td>
+                <td class="py-3 px-4">Visa Application Submitted</td>
+                <td class="py-3 px-4">2 min ago</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <button class="text-gray-500 hover:text-blue-600" title="View"><i class="fas fa-eye"></i></button>
+                </td>
+              </tr>
+				 <tr class="border-b border-gray-200 hover:bg-blue-50 transition">
+                <td class="py-3 px-4 font-medium">100280</td>
+                <td class="py-3 px-4">Ms.</td>
+                <td class="py-3 px-4">Lisa</td>
+                <td class="py-3 px-4">Johnson</td>
+				<td class="py-3 px-4">American</td>
+                <td class="py-3 px-4">Stamford</td>
+                <td class="py-3 px-4">Law</td>
+                <td class="py-3 px-4">Jan 2026</td>
+                <td class="py-3 px-4">Application Submitted</td>
+                <td class="py-3 px-4">2 min ago</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <button class="text-gray-500 hover:text-blue-600" title="View"><i class="fas fa-eye"></i></button>
+                </td>
+              </tr>
+			 
+            </tbody>
+          </table>
+		  <!-- Table Footer -->
+		  <div class="flex flex-col md:flex-row justify-between items-center py-4 px-6 text-sm text-gray-500 select-none">
+              <button class="rounded-md py-2 px-5 text-blue-600 bg-blue-50 hover:bg-blue-100 font-semibold transition mb-3 md:mb-0">Load More</button>
+              <span>Showing 6 of 42 applications</span>
+            </div>
+        </div>
+      </div>
+            
+            
+          
+            <!-- Bulk Download Button 
+            <div class="flex justify-end py-4 px-6">
+              <button class="flex items-center gap-2 rounded-xl px-5 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold transition shadow"><i class="fas fa-file-download"></i> Bulk Download</button>
+            </div>
+          </div>
+        </div>-->
+        <!-- Quick Actions -->
+        <!--div class="mt-6">
+          <div class="font-semibold mb-2">Quick Actions</div>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <button class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition">Export Data</button>
+            <button class="px-5 py-2 rounded-xl bg-blue-100 hover:bg-blue-200 text-blue-600 text-sm font-semibold transition">Send Notification</button>
+          </div>
+        </div>-->
+      </section>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-gray-200 pt-8 pb-7 w-full">
+      <div class="max-w-[1600px] mx-auto px-4 sm:px-10 flex flex-col items-center justify-center gap-2">
+        <div class="flex gap-4 mb-3">
+          <a href="#" class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" title="Facebook"><i class="fab fa-facebook-f text-blue-600 text-lg"></i></a>
+          <a href="#" class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" title="Twitter"><i class="fab fa-twitter text-blue-500 text-lg"></i></a>
+          <a href="#" class="p-2 rounded-full bg-blue-50 hover:bg-blue-50 transition" title="LinkedIn"><i class="fab fa-linkedin-in text-blue-700 text-lg"></i></a>
+          <a href="#" class="p-2 rounded-full bg-blue-50 hover:bg-blue-100 transition" title="Instagram"><i class="fab fa-instagram text-pink-500 text-lg"></i></a>
+        </div>
+        <div class="text-xs text-gray-400 text-center">
+          © EduConnect 2025. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Profile Menu Toggle
+        const profileButton = document.getElementById('profileButton');
+        const profileMenu = document.getElementById('profileMenu');
+        
+        // Toggle menu on profile button click
+        profileButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+          profileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!profileButton.contains(e.target)) {
+            profileMenu.classList.add('hidden');
+          }
+        });
+        
+        // Logout handler
+        window.handleLogout = function() {
+          // Add any cleanup logic here (e.g., clearing session storage)
+          window.location.href = 'Login.html'; // Redirect to login page
+        };
+      });
+    </script>
+    
+    
+    <script>
+      // Toggle NAV active highlight on click (both desktop and mobile)
+      function setActiveMenu(link, allLinks) {
+        allLinks.forEach(el => {
+          el.classList.remove('active-menu');
+          el.classList.remove('active-bg');
+        });
+        link.classList.add('active-menu');
+        link.classList.add('active-bg');
+      }
+      
+      // Scroll spy to highlight active section
+      function handleScroll() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu-link');
+        
+        let currentSection = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.scrollY >= (sectionTop - 100) && window.scrollY < (sectionTop + sectionHeight - 100)) {
+            currentSection = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active-menu');
+          link.classList.remove('active-bg');
+        });
+
+        if (currentSection) {
+          navLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${currentSection}`) {
+              link.classList.add('active-menu');
+              link.classList.add('active-bg');
+            }
+          });
+        } else {
+          // If no section matched, highlight Applications menu by default
+          const applicationsLink = document.getElementById('applications-link');
+          const applicationsLinkMobile = document.getElementById('applications-link-m');
+          applicationsLink.classList.add('active-menu', 'active-bg');
+          applicationsLinkMobile.classList.add('active-menu', 'active-bg');
+        }
+      }
+      
+      document
+</script>
+  </body>
+</html>
