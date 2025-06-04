@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>EduRecruit - Edit Global Tech University</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #374151;
+    }
+    .label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: #4b5563;
+      margin-bottom: 0.5rem;
+    }
+    .input-url, .input-file-label {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      color: #111827;
+      outline-offset: 2px;
+      transition: border-color 0.2s ease;
+    }
+    .input-url:focus {
+      border-color: #000000;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.25);
+    }
+    .input-file-container {
+      margin-top: 0.75rem;
+    }
+    .input-file-label {
+      display: inline-block;
+      cursor: pointer;
+      background-color: #1f2937;
+      color: white;
+      text-align: center;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      user-select: none;
+    }
+    .input-file-label:hover {
+      background-color: #111827;
+    }
+    .input-file {
+      display: none;
+    }
+    .preview-container {
+      margin-top: 1rem;
+      max-width: 280px;
+      max-height: 140px;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background: white;
+    }
+    .preview-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .note {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="flex flex-col md:flex-row h-screen">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 bg-white shadow-lg flex-shrink-0">
+      <div class="p-4 border-b">
+        <div class="flex items-center justify-between">
+          <h1 class="text-xl font-bold">EduRecruit</h1>
+          <button class="text-gray-500 hover:text-gray-700 md:hidden" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <nav class="p-4 hidden md:block" id="sidebarNav">
+        <ul class="space-y-2">
+          <li>
+            <a class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg sidebar-link" href="index.html">
+              <i class="fas fa-th-large w-6"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg sidebar-link" href="applicants.html">
+              <i class="fas fa-users w-6"></i>
+              <span>Applicants</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg sidebar-link" href="agents.html">
+              <i class="fas fa-user-tie w-6"></i>
+              <span>Agents</span>
+            </a>
+          </li>
+          <li>
+            <a aria-current="page" class="flex items-center p-2 text-gray-700 bg-gray-100 rounded-lg sidebar-link" href="universities.html">
+              <i class="fas fa-university w-6"></i>
+              <span>Universities</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg sidebar-link" href="courses.html">
+              <i class="fas fa-book w-6"></i>
+              <span>Courses</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg sidebar-link" href="reports.html">
+              <i class="fas fa-chart-bar w-6"></i>
+              <span>Reports</span>
+            </a>
+          </li>
+        </ul>
+        <div class="mt-8">
+          <h3 class="px-2 text-xs font-semibold text-gray-600 uppercase">Settings</h3>
+          <ul class="mt-3 space-y-2">
+            <li>
+              <a class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg sidebar-link" href="profile.html">
+                <i class="fas fa-user w-6"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg sidebar-link" href="#" onclick="confirmLogout(event)">
+                <i class="fas fa-sign-out-alt w-6"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-4 md:p-8">
+      <div class="max-w-7xl mx-auto">
+        <!-- Add University Form -->
+        <div class="mt-8 bg-white rounded-lg shadow-sm">
+          <div class="p-6 border-b">
+            <h2 class="text-lg font-semibold">Edit University</h2>
+          </div>
+          <div class="p-6">
+            <form class="space-y-6" novalidate="">
+              <div>
+                <label class="block text-sm font-medium text-gray-700" for="universityName">University Name</label>
+                <input class="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" id="universityName" name="universityName" type="text" value="Global Tech University" required/>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1" for="region">Select Region</label>
+                <select id="region" class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                  <option value="" disabled>Choose a region</option>
+                  <option value="europe">Europe</option>
+                  <option value="northAmerica" selected>North America</option>
+                  <option value="asia">Asia</option>
+                  <option value="australia">Australia</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700" for="location">Country &amp; City</label>
+                <input class="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" id="location" name="location" type="text" value="United States, New York" required/>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700" for="accreditation">Accreditation Info</label>
+                <textarea class="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" id="accreditation" name="accreditation" rows="3" required>Accredited by the Global Education Board</textarea>
+              </div>
+              <div>
+                <label class="label" for="logoUrl">University Logo</label>
+                <input class="input-url" id="logoUrl" name="logoUrl" type="url" value="https://storage.googleapis.com/a1aa/image/23539fd1-190d-4eb6-712e-0285a1dcb1fb.jpg" placeholder="Paste logo URL (optional)" autocomplete="off"/>
+                <div class="input-file-container">
+                  <label for="fileUpload" class="input-file-label">Or Upload Logo</label>
+                  <input id="fileUpload" class="input-file" type="file" accept="image/*"/>
+                </div>
+                <div class="note">Supported formats: PNG, JPG, JPEG, GIF. Max size: 5MB.</div>
+                <div class="preview-container" id="previewContainer" style="display:block; position: relative;">
+                  <img id="previewImage" src="https://storage.googleapis.com/a1aa/image/23539fd1-190d-4eb6-712e-0285a1dcb1fb.jpg" alt="Logo Preview"/>
+                  <button type="button" id="deleteLogoBtn" aria-label="Delete uploaded logo" style="position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.5); border: none; color: white; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 16px; line-height: 1;">&times;</button>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700" for="partnerSince">Partner Since</label>
+                <input class="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" id="partnerSince" name="partnerSince" type="date" value="2010-05-15"/>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700" for="contactInfo">Contact Info</label>
+                <input class="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" id="contactInfo" name="contactInfo" type="text" value="contact@globaltech.edu"/>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700" for="websiteUrl">Website URL</label>
+                <input class="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" id="websiteUrl" name="websiteUrl" type="url" value="https://www.globaltech.edu"/>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700" for="status">Status</label>
+                <select class="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" id="status" name="status">
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700" for="tags">Tags/Filters</label>
+                <input class="mt-1 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" id="tags" name="tags" type="text" value="technology, engineering, computer science"/>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <button class="px-4 py-2 text-sm font-medium text-white bg-black rounded-lg hover:bg-gray-800" type="submit">Save Changes</button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200" type="reset">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    // Sidebar toggle for mobile
+    document.getElementById('sidebarToggle').addEventListener('click', function() {
+      const nav = document.getElementById('sidebarNav');
+      if (nav.classList.contains('hidden')) {
+        nav.classList.remove('hidden');
+      } else {
+        nav.classList.add('hidden');
+      }
+    });
+
+    // Handle sidebar navigation active state
+    $(document).ready(function() {
+      $('.sidebar-link').click(function(e) {
+        $('.sidebar-link').removeClass('bg-gray-100 text-gray-700 font-semibold');
+        $(this).addClass('bg-gray-100 text-gray-700 font-semibold');
+      });
+
+      // Delete logo button handler
+      $('#deleteLogoBtn').click(function() {
+        $('#fileUpload').val('');
+        $('#logoUrl').val('');
+        $('#previewImage').attr('src', '#');
+        $('#previewContainer').hide();
+      });
+    });
+
+    function confirmLogout(event) {
+      event.preventDefault();
+      if (confirm("Are you sure you want to logout?")) {
+        window.location.href = "Login.html";
+      }
+    }
+  </script>
+</body>
+</html>
