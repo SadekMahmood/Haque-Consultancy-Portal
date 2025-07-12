@@ -533,61 +533,69 @@
           </div>
         </section>
       <!-- Education & Language Section -->
-      <section aria-labelledby="educationLanguageHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h2 class="text-lg font-semibold mb-6" id="educationLanguageHeading">Education &amp; Language</h2>
-        <div class="space-y-6">
-          <div>
-            <label class="block text-sm font-medium mb-2">Does the student hold any language qualification?</label>
-            <div class="space-y-2">
-              <label class="flex items-center">
-                <input class="text-blue-600 focus:ring-blue-500 h-4 w-4" name="hasLanguageQual" type="radio" value="yes" checked />
-                <span class="ml-2 text-sm">Yes</span>
-              </label>
-              <label class="flex items-center">
-                <input class="text-blue-600 focus:ring-blue-500 h-4 w-4" name="hasLanguageQual" type="radio" value="no" />
-                <span class="ml-2 text-sm">No</span>
-              </label>
+       <section aria-labelledby="educationLanguageHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h2 class="text-lg font-semibold mb-6" id="educationLanguageHeading">Education &amp; Language</h2>
+          <div class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium mb-2">Does the student hold any language qualification?<span class="text-red-600 ml-1">*</span></label>
+              <div class="space-y-2">
+                <label class="flex items-center">
+                  <input class="text-blue-600 focus:ring-blue-500 h-4 w-4" name="hasLanguageQual" type="radio" value="yes" checked/>
+                  <span class="ml-2 text-sm">Yes</span>
+                </label>
+                <label class="flex items-center">
+                  <input class="text-blue-600 focus:ring-blue-500 h-4 w-4" name="hasLanguageQual" type="radio" value="no"/>
+                  <span class="ml-2 text-sm">No</span>
+                </label>
+              </div>
+            </div>
+            <div id="ieltsScores">
+              <h3 class="text-sm font-medium mb-4">IELTS Scores</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                  <label class="block text-sm mb-1" for="listening">Listening</label>
+                  <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="listening" max="9" min="0" name="listening" step="0.5" type="number" value="7.5"/>
+                </div>
+                <div>
+                  <label class="block text-sm mb-1" for="reading">Reading</label>
+                  <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="reading" max="9" min="0" name="reading" step="0.5" type="number" value="8.0"/>
+                </div>
+                <div>
+                  <label class="block text-sm mb-1" for="speaking">Speaking</label>
+                  <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="speaking" max="9" min="0" name="speaking" step="0.5" type="number" value="7.0"/>
+                </div>
+                <div>
+                  <label class="block text-sm mb-1" for="writing">Writing</label>
+                  <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="writing" max="9" min="0" name="writing" step="0.5" type="number" value="7.5"/>
+                </div>
+                <div>
+                  <label class="block text-sm mb-1" for="overall">Overall</label>
+                  <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="overall" max="9" min="0" name="overall" step="0.5" type="number" value="7.5"/>
+                </div>
+				<div>
+                    <label class="block text-sm font-medium mb-1" for="dateFrom-0">Test Date</label>
+                    <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="TestDate" name="TestDate" required type="date" value="2016-09-01"/>
+                  </div>
+				<div>
+                  <label class="block text-sm mb-1" for="TRFNumber">TRF Number</label>
+                  <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="TRFNumber" name="TRFNumber" type="text" value="15BD001245MAH001"/>
+                </div>
+              </div>
+              <div class="mt-4">
+                <label class="block text-sm mb-1" for="cefrLevel">CEFR Level</label>
+                <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="cefrLevel" name="cefrLevel">
+                  <option disabled value="">Select CEFR level</option>
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                  <option value="B1">B1</option>
+                  <option value="B2" selected>B2</option>
+                  <option value="C1">C1</option>
+                  <option value="C2">C2</option>
+                </select>
+              </div>
             </div>
           </div>
-          <div id="ieltsScores" class="">
-            <h3 class="text-sm font-medium mb-4">IELTS Scores</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-              <div>
-                <label class="block text-sm mb-1" for="listening">Listening</label>
-                <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="listening" max="9" min="0" name="listening" step="0.5" type="number" value="7.5" />
-              </div>
-              <div>
-                <label class="block text-sm mb-1" for="reading">Reading</label>
-                <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="reading" max="9" min="0" name="reading" step="0.5" type="number" value="8.0" />
-              </div>
-              <div>
-                <label class="block text-sm mb-1" for="speaking">Speaking</label>
-                <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="speaking" max="9" min="0" name="speaking" step="0.5" type="number" value="7.0" />
-              </div>
-              <div>
-                <label class="block text-sm mb-1" for="writing">Writing</label>
-                <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="writing" max="9" min="0" name="writing" step="0.5" type="number" value="7.5" />
-              </div>
-              <div>
-                <label class="block text-sm mb-1" for="overall">Overall</label>
-                <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="overall" max="9" min="0" name="overall" step="0.5" type="number" value="7.5" />
-              </div>
-            </div>
-            <div class="mt-4">
-              <label class="block text-sm mb-1" for="cefrLevel">CEFR Level</label>
-              <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="cefrLevel" name="cefrLevel">
-                <option disabled value="">Select CEFR level</option>
-                <option value="A1">A1</option>
-                <option value="A2">A2</option>
-                <option value="B1">B1</option>
-                <option value="B2" selected>B2</option>
-                <option value="C1">C1</option>
-                <option value="C2">C2</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
       <!-- Education History Section -->
       <section aria-labelledby="educationHistoryHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
         <h2 class="text-lg font-semibold mb-6" id="educationHistoryHeading">Education History</h2>
