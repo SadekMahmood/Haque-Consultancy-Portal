@@ -1,1 +1,1 @@
-AGENT panel >(NewApplication.html, applicantedit.html) file has been updated
+AGENT panel >(NewApplication.html, applicantedit.html,applicantview.html) file has been updated
