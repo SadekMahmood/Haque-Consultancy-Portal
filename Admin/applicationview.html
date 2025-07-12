@@ -329,33 +329,112 @@
           Application Current Status: <strong>Information required</strong>
         </p>
 
-        <label for="comments" class="block mb-1 text-lg font-semibold">Comments for Agents:</label>
-        <textarea id="comments" rows="8" class="w-full border border-gray-300 text-lg mb-6 resize-y p-3 rounded-md" aria-label="Comments for Admin"></textarea>
+        <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comments for Agents</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f8f9fa;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      box-sizing: border-box;
+      background-color: white;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #e0e0e0;
+    }
+    h3 {
+      margin-top: 30px;
+      color: #004085;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      background-color: white;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background-color: #343a40;
+      color: white;
+    }
+    /* New styles for comment row colors */
+    .agent-comment {
+      background-color: #cce5ff; /* modern soft blue */
+      color: #004085;
+    }
+    .admin-comment {
+      background-color: #d4edda; /* modern soft green */
+      color: #155724;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <label for="comments">Comments for Agents:</label>
+    <textarea id="comments" name="comments" placeholder="Enter your comments here..."></textarea>
+    <br />
+    <button type="submit">Submit</button>
+  </form>
 
-        <button type="submit" class="text-lg bg-gray-200 border border-gray-400 rounded px-6 py-3 cursor-pointer hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-          Submit
-        </button>
-
-        <div class="mt-8 overflow-x-auto">
-        </div>
-
-        <div class="mt-6 overflow-x-auto">
-          <p class="mb-1 text-lg font-bold text-blue-800">Comment Log:</p>
-          <table class="w-full border border-gray-400 text-lg border-collapse" role="table" aria-label="Comment Log">
-            <thead>
-              <tr class="bg-gray-700 text-white text-lg">
-                <th class="border border-gray-400 px-6 text-left font-semibold">Comment</th>
-                <th class="border border-gray-400 px-6 text-left font-semibold">Commented On</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border border-gray-400 px-6">Kindly provide verification link for bachelor degree done</td>
-                <td class="border border-gray-400 px-6">14-09-2023</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <h3>Comment Log:</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Comment</th>
+        <th>Commented On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="agent-comment">
+        <td>Kindly provide verification link for bachelor degree done</td>
+        <td>14-09-2023</td>
+      </tr>
+      <tr class="admin-comment">
+        <td>Please confirm the submission of the final report</td>
+        <td>15-09-2023</td>
+      </tr>
+      <tr class="agent-comment">
+        <td>Need update on the project timeline</td>
+        <td>16-09-2023</td>
+      </tr>
+      <tr class="admin-comment">
+        <td>Requesting additional documents for verification</td>
+        <td>17-09-2023</td>
+      </tr>
+      <tr class="agent-comment">
+        <td>Follow up on the pending approvals</td>
+        <td>18-09-2023</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
 
         <div class="mt-6 overflow-x-auto">
           <p class="mb-1 text-lg font-bold text-blue-800">Status Log:</p>
