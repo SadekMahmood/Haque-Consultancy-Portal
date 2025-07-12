@@ -160,14 +160,6 @@
       <i class="fas fa-chevron-right text-xs mx-1">
       </i>
      </li>
-     <li>
-      <a class="hover:underline text-gray-500" href="#">
-       Students
-      </a>
-     </li>
-     <li>
-      <i class="fas fa-chevron-right text-xs mx-1">
-      </i>
      </li>
      <li class="text-gray-700 font-semibold">
       New Application
@@ -189,7 +181,7 @@
      <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 university-application">
       <div class="flex justify-between items-center mb-4">
        <h2 class="text-lg font-semibold">
-        University Application 1
+        University &amp; Course Selection
        </h2>
        <button aria-label="Remove this university application" class="text-red-600 hover:text-red-800 text-sm font-medium remove-university-application hidden" type="button">
         <i class="fas fa-times">
@@ -200,9 +192,9 @@
       <!-- Centre Selection Section -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
        <div>
-        <label class="block text-sm font-medium mb-1" for="region-0">
-         Select Region
-        </label>
+         <label class="block text-sm font-medium mb-1" for="region-0">
+          Select Region<span class="text-red-600 ml-1">*</span>
+         </label>
         <select class="region-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="region-0" name="region[]" required="">
          <option disabled="" selected="" value="">
           Choose a region
@@ -223,7 +215,7 @@
        </div>
        <div>
         <label class="block text-sm font-medium mb-1">
-         Source of Funding
+         Source of Funding <span class="text-red-600 ml-1">*</span>
         </label>
         <div class="space-y-2">
          <label class="flex items-center">
@@ -241,9 +233,9 @@
         </div>
        </div>
        <div>
-        <label class="block text-sm font-medium mb-1" for="centre-0">
-         Centre/University Selection
-        </label>
+         <label class="block text-sm font-medium mb-1" for="centre-0">
+          Centre/University Selection<span class="text-red-600 ml-1">*</span>
+         </label>
         <select class="centre-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="centre-0" name="centre[]" required="">
          <option disabled="" selected="" value="">
           Select centre/university
@@ -260,9 +252,9 @@
         </select>
        </div>
        <div>
-        <label class="block text-sm font-medium mb-1" for="programType-0">
-         Type of Programme
-        </label>
+         <label class="block text-sm font-medium mb-1" for="programType-0">
+          Type of Programme<span class="text-red-600 ml-1">*</span>
+         </label>
         <select class="program-type-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="programType-0" name="programType[]" required="">
          <option disabled="" selected="" value="">
           Select program type
@@ -289,27 +281,33 @@
        </div>
        <div>
         <label class="block text-sm font-medium mb-1" for="program-0">
-         Select Program
+         Select Program/Course<span class="text-red-600 ml-1">*</span>
         </label>
-        <select class="program-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="program-0" name="program[]" required="">
-         <option disabled="" selected="" value="">
-          Choose a program
-         </option>
-         <option value="program1">
-          Program 1
-         </option>
-         <option value="program2">
-          Program 2
-         </option>
-         <option value="program3">
-          Program 3
-         </option>
-        </select>
+        <div class="flex items-center gap-2">
+          <select class="program-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="program-0" name="program-single" >
+            <option disabled selected value="">
+              Choose a program
+            </option>
+            <option value="program1">
+              Bsc in Computer Science
+            </option>
+            <option value="program2">
+              Ms in Business Administration
+            </option>
+            <option value="program3">
+              BSC in Data Science
+            </option>
+          </select>
+          <button type="button" id="addProgramBtn-0" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Add
+          </button>
+        </div>
+        <div id="selectedProgramsContainer-0" class="mt-2 space-y-1"></div>
        </div>
        <div>
-        <label class="block text-sm font-medium mb-1" for="yearOfEntry-0">
-         Year of Entry
-        </label>
+         <label class="block text-sm font-medium mb-1" for="yearOfEntry-0">
+          Year of Entry<span class="text-red-600 ml-1">*</span>
+         </label>
         <select class="year-of-entry-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="yearOfEntry-0" name="yearOfEntry[]" required="">
          <option disabled="" selected="" value="">
           Select Year of Entry
@@ -324,12 +322,6 @@
           Final Year
          </option>
         </select>
-       </div>
-       <div>
-        <label class="block text-sm font-medium mb-1" for="startDate-0">
-         Course Start Date
-        </label>
-        <input class="start-date-input w-full rounded-lg bg-gray-100 border border-gray-200 text-gray-900 text-sm px-4 py-2.5" id="startDate-0" name="startDate[]" readonly="" type="text"/>
        </div>
        <div>
         <label class="block text-sm font-medium mb-1">
@@ -353,24 +345,16 @@
       </div>
      </section>
     </div>
-    <div class="flex justify-end mb-8">
-     <button class="flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 rounded-lg border border-blue-200 hover:border-blue-300 bg-blue-50 hover:bg-blue-100 transition-colors" id="addUniversityApplication" type="button">
-      <i class="fas fa-plus">
-      </i>
-      <span>
-       Add Another University
-      </span>
-     </button>
-    </div>
     <!-- Student Details Section -->
-    <section aria-labelledby="studentDetailsHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+   
+	<section aria-labelledby="studentDetailsHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
      <h2 class="text-lg font-semibold mb-6" id="studentDetailsHeading">
       Student Details
      </h2>
      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
        <label class="block text-sm font-medium mb-1" for="title">
-        Title
+        Title<span class="text-red-600 ml-1">*</span>
        </label>
        <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="title" name="title" required="">
         <option disabled="" selected="" value="">
@@ -401,13 +385,13 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="forenames">
-        Forenames
+        Forenames<span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="forenames" name="forenames" required="" type="text"/>
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="surname">
-        Surname/Family Name
+        Surname/Family Name<span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="surname" name="surname" required="" type="text"/>
       </div>
@@ -419,13 +403,13 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="passportNo">
-        Passport No
+        Passport No<span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="passportNo" name="passportNo" required="" type="text"/>
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="gender">
-        Gender
+        Gender<span class="text-red-600 ml-1">*</span>
        </label>
        <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="gender" name="gender" required="">
         <option disabled="" selected="" value="">
@@ -444,13 +428,13 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="dob">
-        Date of Birth
+        Date of Birth<span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="dob" name="dob" required="" type="date"/>
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="addressLine1">
-        Address Line 1
+        Address Line 1<span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="addressLine1" name="addressLine1" required="" type="text"/>
       </div>
@@ -472,28 +456,16 @@
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="stateProvinceCounty" name="stateProvinceCounty" type="text"/>
       </div>
+     
       <div>
        <label class="block text-sm font-medium mb-1" for="domicileCountry">
-        Domicile/Country of Permanent Residence
+        Domicile/Country of Permanent Residence<span class="text-red-600 ml-1">*</span>
        </label>
-       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="domicileCountry" name="domicileCountry">
-        <option disabled="" selected="" value="">
-         Select domicile country
-        </option>
-        <option value="domicile1">
-         Domicile Option 1
-        </option>
-        <option value="domicile2">
-         Domicile Option 2
-        </option>
-        <option value="domicile3">
-         Domicile Option 3
-        </option>
-       </select>
+       <input type="text" class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="domicileCountry" name="domicileCountry" />
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="country">
-        Country
+        Country<span class="text-red-600 ml-1">*</span>
        </label>
        <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="country" name="country" required="">
         <option disabled="" selected="" value="">
@@ -503,7 +475,7 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="nationality">
-        Nationality
+        Nationality<span class="text-red-600 ml-1">*</span>
        </label>
        <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="nationality" name="nationality" required="">
         <option disabled="" selected="" value="">
@@ -513,13 +485,19 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="placeOfBirth">
-        Place of Birth
+        Place of Birth<span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="placeOfBirth" name="placeOfBirth" type="text"/>
       </div>
       <div>
+       <label class="block text-sm font-medium mb-1" for="ethnicity">
+        Ethnicity<span class="text-red-600 ml-1">*</span>
+       </label>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="ethnicity" name="ethnicity" type="text"/>
+      </div>
+      <div>
        <label class="block text-sm font-medium mb-1" for="countryOfBirth">
-        Country of Birth
+        Country of Birth<span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="countryOfBirth" name="countryOfBirth" type="text"/>
       </div>
@@ -529,66 +507,28 @@
        </label>
        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="ucasNo" name="ucasNo" type="text"/>
       </div>
-      <div>
-       <label class="block text-sm font-medium mb-1" for="residentialCategory">
-        Residential Category
+       <div>
+       <label class="block text-sm font-medium mb-1" for="ucasNo">
+        Residential Category<span class="text-red-600 ml-1">*</span>
        </label>
-       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="residentialCategory" name="residentialCategory">
-        <option disabled="" selected="" value="">
-         Select residential category
-        </option>
-        <option value="option1">
-         Option 1
-        </option>
-        <option value="option2">
-         Option 2
-        </option>
-        <option value="option3">
-         Option 3
-        </option>
-       </select>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="ucasNo" name="ucasNo" type="text"/>
       </div>
       <div>
-       <label class="block text-sm font-medium mb-1" for="medicalCode">
+       <label class="block text-sm font-medium mb-1" for="ucasNo">
         Medical Code
        </label>
-       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="medicalCode" name="medicalCode">
-        <option disabled="" selected="" value="">
-         Select medical code
-        </option>
-        <option value="option1">
-         Option 1
-        </option>
-        <option value="option2">
-         Option 2
-        </option>
-        <option value="option3">
-         Option 3
-        </option>
-       </select>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="ucasNo" name="ucasNo" type="text"/>
       </div>
       <div>
-       <label class="block text-sm font-medium mb-1" for="disabilityType">
-        Disability Type
+       <label class="block text-sm font-medium mb-1" for="ucasNo">
+        Disability Type<span class="text-red-600 ml-1">*</span>
        </label>
-       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="disabilityType" name="disabilityType">
-        <option disabled="" selected="" value="">
-         Select disability type
-        </option>
-        <option value="option1">
-         Option 1
-        </option>
-        <option value="option2">
-         Option 2
-        </option>
-        <option value="option3">
-         Option 3
-        </option>
-       </select>
+       <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="ucasNo" name="ucasNo" type="text"/>
       </div>
+
       <div>
        <label class="block text-sm font-medium mb-1">
-        Has the applicant studied in the UK before?
+        Has the applicant studied in this country before?<span class="text-red-600 ml-1">*</span>
        </label>
        <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="studiedUKBefore" name="studiedUKBefore">
         <option disabled="" selected="" value="">
@@ -601,6 +541,38 @@
          No
         </option>
        </select>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="previousVisaRefusal">
+        Has the student had a previous Visa refusal for this country?
+       </label>
+       <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="previousVisaRefusal" name="previousVisaRefusal">
+        <option disabled="" selected="" value="">
+         Select option
+        </option>
+        <option value="yes">
+         Yes
+        </option>
+        <option value="no">
+         No
+        </option>
+       </select>
+       <div class="mt-2 hidden" id="previousVisaRefusalDetailsContainer">
+        <label class="block text-sm font-medium mb-1" for="previousVisaRefusalDetails">
+         Reason for visa refusal
+        </label>
+        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="previousVisaRefusalDetails" name="previousVisaRefusalDetails" type="text"/>
+       </div>
+      </div>
+      <div>
+       <label class="block text-sm font-medium mb-1" for="studentEmail">
+        Agent Email <span class="text-red-600 ml-1">*</span>
+       </label>
+       <div class="relative">
+        <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="studentEmail" name="studentEmail" placeholder="Enter email" required="" type="email"/>
+        <i class="fas fa-envelope absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none">
+        </i>
+       </div>
       </div>
       <div class="mt-6">
        <label class="block text-sm font-medium mb-1" for="counsellorName">
@@ -618,7 +590,7 @@
      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
        <label class="block text-sm font-medium mb-1" for="studentEmail">
-        Student Email
+        Student Email <span class="text-red-600 ml-1">*</span>
        </label>
        <div class="relative">
         <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="studentEmail" name="studentEmail" placeholder="Enter email" required="" type="email"/>
@@ -628,7 +600,7 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="confirmEmail">
-        Confirm Email
+        Confirm Email <span class="text-red-600 ml-1">*</span>
        </label>
        <div class="relative">
         <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="confirmEmail" name="confirmEmail" placeholder="Re-enter email" required="" type="email"/>
@@ -638,7 +610,7 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="primaryPhone">
-        Phone No.
+        Phone No. 
        </label>
        <div class="relative">
         <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="primaryPhone" name="primaryPhone" placeholder="Enter phone number" required="" type="tel"/>
@@ -648,7 +620,7 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="secondaryPhone">
-        Mobile No.
+        Mobile No. <span class="text-red-600 ml-1">*</span>
        </label>
        <div class="relative">
         <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="secondaryPhone" name="secondaryPhone" placeholder="Enter mobile number" type="tel"/>
@@ -666,7 +638,7 @@
      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
        <label class="block text-sm font-medium mb-1" for="relation">
-        Relation to Student
+        Relation to Student <span class="text-red-600 ml-1">*</span>
        </label>
        <div class="relative">
         <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="relation" name="relation" placeholder="Father/Mother/Other" required="" type="text"/>
@@ -676,25 +648,25 @@
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="parentFullName">
-        Full Name
+        Full Name <span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentFullName" name="parentFullName" placeholder="Enter full name" required="" type="text"/>
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="parentPhone">
-        Primary Telephone
+        Primary Telephone 
        </label>
        <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentPhone" name="parentPhone" placeholder="Enter phone" required="" type="tel"/>
       </div>
       <div>
        <label class="block text-sm font-medium mb-1" for="parentAddress">
-        Address
+        Address <span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentAddress" name="parentAddress" placeholder="Same as student or enter address" type="text"/>
       </div>
       <div class="md:col-span-2">
        <label class="block text-sm font-medium mb-1" for="altEmail">
-        Alternative/Emergency Email
+        Alternative/Emergency Email <span class="text-red-600 ml-1">*</span>
        </label>
        <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="altEmail" name="altEmail" placeholder="Enter email" type="email"/>
       </div>
@@ -754,12 +726,24 @@
          </label>
          <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="writing" max="9" min="0" name="writing" step="0.5" type="number"/>
         </div>
-        <div>
-         <label class="block text-sm mb-1" for="overall">
-          Overall
-         </label>
-         <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="overall" max="9" min="0" name="overall" step="0.5" type="number"/>
-        </div>
+         <div>
+          <label class="block text-sm mb-1" for="overall">
+           Overall
+          </label>
+          <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="overall" max="9" min="0" name="overall" step="0.5" type="number"/>
+         </div>
+         <div>
+          <label class="block text-sm mb-1" for="trfNumber">
+           TRF Number
+          </label>
+          <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="trfNumber" name="trfNumber" type="text"/>
+         </div>
+         <div>
+          <label class="block text-sm mb-1" for="testDate">
+           Test Date
+          </label>
+          <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="testDate" name="testDate" type="date"/>
+         </div>
        </div>
        <div class="mt-4">
         <label class="block text-sm mb-1" for="cefrLevel">
@@ -809,13 +793,13 @@
        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
          <label class="block text-sm font-medium mb-1" for="institutionName-0">
-          Institution Name
+          Institution Name<span class="text-red-600 ml-1">*</span>
          </label>
          <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="institutionName-0" name="institutionName[]" required="" type="text"/>
         </div>
         <div>
          <label class="block text-sm font-medium mb-1" for="institutionCountry-0">
-          Institution Country
+          Institution Country<span class="text-red-600 ml-1">*</span>
          </label>
          <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="institutionCountry-0" name="institutionCountry[]" required="">
           <option disabled="" selected="" value="">
@@ -825,7 +809,7 @@
         </div>
         <div>
          <label class="block text-sm font-medium mb-1" for="courseStudied-0">
-          Course Studied
+          Course Studied<span class="text-red-600 ml-1">*</span>
          </label>
          <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="courseStudied-0" name="courseStudied[]" required="" type="text"/>
         </div>
@@ -940,9 +924,7 @@
     </section>
     <!-- Action Buttons -->
     <div class="flex justify-end space-x-4">
-     <button class="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" type="button">
-      Save as Draft
-     </button>
+     
      <button class="px-6 py-2.5 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" type="submit">
       Submit Application
      </button>
@@ -1064,6 +1046,19 @@
           }
         });
       });
+
+      // Show/Hide previous visa refusal details based on selection
+      const previousVisaRefusalSelect = document.getElementById("previousVisaRefusal");
+      const previousVisaRefusalDetailsContainer = document.getElementById("previousVisaRefusalDetailsContainer");
+      if (previousVisaRefusalSelect && previousVisaRefusalDetailsContainer) {
+        previousVisaRefusalSelect.addEventListener("change", function () {
+          if (this.value === "yes") {
+            previousVisaRefusalDetailsContainer.classList.remove("hidden");
+          } else {
+            previousVisaRefusalDetailsContainer.classList.add("hidden");
+          }
+        });
+      }
 
       // Add more education entries
       const educationHistory = document.getElementById("educationHistory");
