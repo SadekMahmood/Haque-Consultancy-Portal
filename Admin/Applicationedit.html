@@ -98,9 +98,9 @@
         <ol class="flex space-x-2 items-center overflow-x-auto scrollbar-hide" role="list">
           <li><a href="#" class="hover:underline text-gray-500">Dashboard</a></li>
           <li><i class="fas fa-chevron-right text-xs mx-1" aria-hidden="true"></i></li>
-          <li><a href="#" class="hover:underline text-gray-500">Students</a></li>
+          <li><a href="#" class="hover:underline text-gray-500">Applicants</a></li>
           <li><i class="fas fa-chevron-right text-xs mx-1" aria-hidden="true"></i></li>
-          <li class="text-gray-700 font-semibold" aria-current="page">Edit Application</li>
+          <li class="text-gray-700 font-semibold" aria-current="page">John Michael</li>
         </ol>
       </nav>
 
@@ -113,239 +113,196 @@
       <form class="space-y-8 max-w-4xl" id="editApplicationForm">
         <!-- Multiple University Applications Container -->
         <div class="space-y-8" id="universityApplicationsContainer">
-          <!-- University Application 1 -->
-          <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 university-application">
-            <div class="flex justify-between items-center mb-4">
-              <h2 class="text-lg font-semibold">
-                University Application 1
-              </h2>
-              <button aria-label="Remove this university application" class="text-red-600 hover:text-red-800 text-sm font-medium remove-university-application hidden" type="button">
-                <i class="fas fa-times"></i>
-                Remove
-              </button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label class="block text-sm font-medium mb-1" for="region-0">
-                  Select Region
-                </label>
-                <select class="region-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="region-0" name="region[]" required>
-                  <option disabled value="">Choose a region</option>
-                  <option value="europe" selected>Europe</option>
-                  <option value="northAmerica">North America</option>
-                  <option value="asia">Asia</option>
-                  <option value="australia">Australia</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1">
-                  Source of Funding
-                </label>
-                <div class="space-y-2">
-                  <label class="flex items-center">
-                    <input class="funding-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="funding-0" required type="radio" value="self" checked/>
-                    <span class="ml-2 text-sm">Self/Family Funded</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input class="funding-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="funding-0" type="radio" value="sponsorship"/>
-                    <span class="ml-2 text-sm">Has Sponsorship</span>
-                  </label>
-                </div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="centre-0">
-                  Centre/University Selection
-                </label>
-                <select class="centre-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="centre-0" name="centre[]" required>
-                  <option disabled value="">Select centre/university</option>
-                  <option value="university1" selected>University of Example 1</option>
-                  <option value="university2">University of Example 2</option>
-                  <option value="university3">University of Example 3</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="programType-0">
-                  Type of Programme
-                </label>
-                <select class="program-type-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="programType-0" name="programType[]" required>
-                  <option disabled value="">Select program type</option>
-                  <option value="undergraduate" selected>Undergraduate</option>
-                  <option value="postgraduate">Postgraduate</option>
-                  <option value="diploma">Diploma</option>
-                  <option value="Research(MRes)">Research (MRes)</option>
-                  <option value="Research(DBA)">Research (DBA)</option>
-                  <option value="Research(PhD)">Research (PhD)</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="program-0">
-                  Select Program
-                </label>
-                <select class="program-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="program-0" name="program[]" required>
-                  <option disabled value="">Choose a program</option>
-                  <option value="program1" selected>Program 1</option>
-                  <option value="program2">Program 2</option>
-                  <option value="program3">Program 3</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="yearOfEntry-0">
-                  Year of Entry
-                </label>
-                <select class="year-of-entry-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="yearOfEntry-0" name="yearOfEntry[]" required>
-                  <option disabled value="">Select Year of Entry</option>
-                  <option value="Year 1" selected>Year 1</option>
-                  <option value="Year 2">Year 2</option>
-                  <option value="Final Year">Final Year</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="startDate-0">
-                  Course Start Date
-                </label>
-                <input class="start-date-input w-full rounded-lg bg-gray-100 border border-gray-200 text-gray-900 text-sm px-4 py-2.5" id="startDate-0" name="startDate[]" readonly type="text" value="September 2024"/>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1">
-                  English Language Preparation Required?
-                </label>
-                <div class="space-y-2">
-                  <label class="flex items-center">
-                    <input class="english-prep-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="englishPrep-0" required type="radio" value="yes" checked/>
-                    <span class="ml-2 text-sm">Yes</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input class="english-prep-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="englishPrep-0" type="radio" value="no"/>
-                    <span class="ml-2 text-sm">No</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- University Application 2 -->
-          <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 university-application">
-            <div class="flex justify-between items-center mb-4">
-              <h2 class="text-lg font-semibold">
-                University Application 2
-              </h2>
-              <button aria-label="Remove this university application" class="text-red-600 hover:text-red-800 text-sm font-medium remove-university-application" type="button">
-                <i class="fas fa-times"></i>
-                Remove
-              </button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label class="block text-sm font-medium mb-1" for="region-1">
-                  Select Region
-                </label>
-                <select class="region-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="region-1" name="region[]" required>
-                  <option disabled value="">Choose a region</option>
-                  <option value="europe">Europe</option>
-                  <option value="northAmerica" selected>North America</option>
-                  <option value="asia">Asia</option>
-                  <option value="australia">Australia</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1">
-                  Source of Funding
-                </label>
-                <div class="space-y-2">
-                  <label class="flex items-center">
-                    <input class="funding-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="funding-1" required type="radio" value="self"/>
-                    <span class="ml-2 text-sm">Self/Family Funded</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input class="funding-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="funding-1" type="radio" value="sponsorship" checked/>
-                    <span class="ml-2 text-sm">Has Sponsorship</span>
-                  </label>
-                </div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="centre-1">
-                  Centre/University Selection
-                </label>
-                <select class="centre-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="centre-1" name="centre[]" required>
-                  <option disabled value="">Select centre/university</option>
-                  <option value="university1">University of Example 1</option>
-                  <option value="university2" selected>University of Example 2</option>
-                  <option value="university3">University of Example 3</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="programType-1">
-                  Type of Programme
-                </label>
-                <select class="program-type-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="programType-1" name="programType[]" required>
-                  <option disabled value="">Select program type</option>
-                  <option value="undergraduate">Undergraduate</option>
-                  <option value="postgraduate" selected>Postgraduate</option>
-                  <option value="diploma">Diploma</option>
-                  <option value="Research(MRes)">Research (MRes)</option>
-                  <option value="Research(DBA)">Research (DBA)</option>
-                  <option value="Research(PhD)">Research (PhD)</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="program-1">
-                  Select Program
-                </label>
-                <select class="program-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="program-1" name="program[]" required>
-                  <option disabled value="">Choose a program</option>
-                  <option value="program1">Program 1</option>
-                  <option value="program2" selected>Program 2</option>
-                  <option value="program3">Program 3</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="yearOfEntry-1">
-                  Year of Entry
-                </label>
-                <select class="year-of-entry-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="yearOfEntry-1" name="yearOfEntry[]" required>
-                  <option disabled value="">Select Year of Entry</option>
-                  <option value="Year 1">Year 1</option>
-                  <option value="Year 2" selected>Year 2</option>
-                  <option value="Final Year">Final Year</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1" for="startDate-1">
-                  Course Start Date
-                </label>
-                <input class="start-date-input w-full rounded-lg bg-gray-100 border border-gray-200 text-gray-900 text-sm px-4 py-2.5" id="startDate-1" name="startDate[]" readonly type="text" value="January 2025"/>
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1">
-                  English Language Preparation Required?
-                </label>
-                <div class="space-y-2">
-                  <label class="flex items-center">
-                    <input class="english-prep-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="englishPrep-1" required type="radio" value="yes"/>
-                    <span class="ml-2 text-sm">Yes</span>
-                  </label>
-                  <label class="flex items-center">
-                    <input class="english-prep-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="englishPrep-1" type="radio" value="no" checked/>
-                    <span class="ml-2 text-sm">No</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </section>
+       <!-- Single University Application Template -->
+     <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 university-application">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-lg font-semibold">
+        University &amp; Course Selection
+       </h2>
+       <button aria-label="Remove this university application" class="text-red-600 hover:text-red-800 text-sm font-medium remove-university-application hidden" type="button">
+        <i class="fas fa-times">
+        </i>
+        Remove
+       </button>
+      </div>
+      <!-- Centre Selection Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+       <div>
+         <label class="block text-sm font-medium mb-1" for="region-0">
+          Select Region<span class="text-red-600 ml-1">*</span>
+         </label>
+        <select class="region-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="region-0" name="region[]" required="">
+         <option disabled="" value="">
+          Choose a region
+         </option>
+         <option value="europe" selected>
+          Europe
+         </option>
+         <option value="northAmerica">
+          North America
+         </option>
+         <option value="asia">
+          Asia
+         </option>
+         <option value="australia">
+          Australia
+         </option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1">
+         Source of Funding <span class="text-red-600 ml-1">*</span>
+        </label>
+        <div class="space-y-2">
+         <label class="flex items-center">
+          <input class="funding-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="funding-0" required="" type="radio" value="self" checked/>
+          <span class="ml-2 text-sm">
+           Self/Family Funded
+          </span>
+         </label>
+         <label class="flex items-center">
+          <input class="funding-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="funding-0" type="radio" value="sponsorship"/>
+          <span class="ml-2 text-sm">
+           Has Sponsorship
+          </span>
+         </label>
         </div>
-        <div class="flex justify-end mb-8">
-          <button class="flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-700 rounded-lg border border-blue-200 hover:border-blue-300 bg-blue-50 hover:bg-blue-100 transition-colors" id="addUniversityApplication" type="button">
-            <i class="fas fa-plus"></i>
-            <span>Add Another University</span>
+       </div>
+       <div>
+         <label class="block text-sm font-medium mb-1" for="centre-0">
+          Centre/University Selection<span class="text-red-600 ml-1">*</span>
+         </label>
+        <select class="centre-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="centre-0" name="centre[]" required="">
+         <option disabled="" value="">
+          Select centre/university
+         </option>
+         <option value="university1" selected>
+          University of Greenwich
+         </option>
+         <option value="university2">
+          University of London
+         </option>
+         <option value="university3">
+          University of Lockwheel
+         </option>
+        </select>
+       </div>
+       <div>
+         <label class="block text-sm font-medium mb-1" for="programType-0">
+          Type of Programme<span class="text-red-600 ml-1">*</span>
+         </label>
+        <select class="program-type-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="programType-0" name="programType[]" required="">
+         <option disabled="" value="">
+          Select program type
+         </option>
+         <option value="undergraduate" selected>
+          Undergraduate
+         </option>
+         <option value="postgraduate">
+          Postgraduate
+         </option>
+         <option value="diploma">
+          Diploma
+         </option>
+         <option value="Research(MRes)">
+          Research (MRes)
+         </option>
+         <option value="Research(DBA)">
+          Research (DBA)
+         </option>
+         <option value="Research(PhD)">
+          Research (PhD)
+         </option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1" for="program-0">
+         Select Program/Course<span class="text-red-600 ml-1">*</span>
+        </label>
+        <div class="flex items-center gap-2">
+          <select class="program-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="program-0" name="program-single" >
+            <option disabled value="">
+              Choose a program
+            </option>
+            <option value="program1" selected>
+              Bsc in Computer Science
+            </option>
+            <option value="program2">
+              Ms in Business Administration
+            </option>
+            <option value="program3">
+              BSC in Data Science
+            </option>
+          </select>
+          <button type="button" id="addProgramBtn-0" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            Add
           </button>
         </div>
+        <div id="selectedProgramsContainer-0" class="mt-2 space-y-1">
+          <div class="flex items-center justify-between bg-blue-100 rounded px-3 py-1 text-sm text-blue-800">
+            Bsc in Computer Science
+            <button type="button" class="ml-2 text-blue-600 hover:text-blue-800 focus:outline-none">
+              &times;
+            </button>
+          </div>
+		  <div id="selectedProgramsContainer-0" class="mt-2 space-y-1">
+          <div class="flex items-center justify-between bg-blue-100 rounded px-3 py-1 text-sm text-blue-800">
+            BSc in Business Administration
+            <button type="button" class="ml-2 text-blue-600 hover:text-blue-800 focus:outline-none">
+              &times;
+            </button>
+          </div>
+        </div>
+       </div>
+       <div>
+         <label class="block text-sm font-medium mb-1" for="yearOfEntry-0">
+          Year of Entry<span class="text-red-600 ml-1">*</span>
+         </label>
+        <select class="year-of-entry-select w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="yearOfEntry-0" name="yearOfEntry[]" required="">
+         <option disabled="" value="">
+          Select Year of Entry
+         </option>
+         <option value="Year 1" selected>
+          Year 1
+         </option>
+         <option value="Year 2">
+          Year 2
+         </option>
+         <option value="Final Year">
+          Final Year
+         </option>
+        </select>
+       </div>
+       <div>
+        <label class="block text-sm font-medium mb-1">
+         English Language Preparation Required?
+        </label>
+        <div class="space-y-2">
+         <label class="flex items-center">
+          <input class="english-prep-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="englishPrep-0" required="" type="radio" value="yes" checked/>
+          <span class="ml-2 text-sm">
+           Yes
+          </span>
+         </label>
+         <label class="flex items-center">
+          <input class="english-prep-radio text-blue-600 focus:ring-blue-500 h-4 w-4" name="englishPrep-0" type="radio" value="no"/>
+          <span class="ml-2 text-sm">
+           No
+          </span>
+         </label>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+ 
 
         <!-- Student Details Section -->
         <section aria-labelledby="studentDetailsHeading" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <h2 class="text-lg font-semibold mb-6" id="studentDetailsHeading">Student Details</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium mb-1" for="title">Title</label>
+              <label class="block text-sm font-medium mb-1" for="title">Title<span class="text-red-600 ml-1">*</span></label>
               <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="title" name="title" required>
                 <option disabled value="">Select title</option>
                 <option value="mr" selected>Mr</option>
@@ -358,11 +315,11 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="forenames">Forenames</label>
+              <label class="block text-sm font-medium mb-1" for="forenames">Forenames<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="forenames" name="forenames" required type="text" value="John Michael"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="surname">Surname/Family Name</label>
+              <label class="block text-sm font-medium mb-1" for="surname">Surname/Family Name<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="surname" name="surname" required type="text" value="Doe"/>
             </div>
             <div>
@@ -370,11 +327,11 @@
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="otherNames" name="otherNames" type="text" value="Alexander"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="passportNo">Passport No</label>
+              <label class="block text-sm font-medium mb-1" for="passportNo">Passport No<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="passportNo" name="passportNo" required type="text" value="X1234567"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="gender">Gender</label>
+              <label class="block text-sm font-medium mb-1" for="gender">Gender<span class="text-red-600 ml-1">*</span></label>
               <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="gender" name="gender" required>
                 <option disabled value="">Select gender</option>
                 <option value="male" selected>Male</option>
@@ -383,11 +340,11 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="dob">Date of Birth</label>
+              <label class="block text-sm font-medium mb-1" for="dob">Date of Birth<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="dob" name="dob" required type="date" value="1998-05-15"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="addressLine1">Address Line 1</label>
+              <label class="block text-sm font-medium mb-1" for="addressLine1">Address Line 1<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="addressLine1" name="addressLine1" required type="text" value="123 Main Street"/>
             </div>
             <div>
@@ -399,20 +356,15 @@
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="addressLine3" name="addressLine3" type="text" value="Downtown"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="stateProvinceCounty">State/Province/County</label>
+              <label class="block text-sm font-medium mb-1" for="stateProvinceCounty">State/Province/County<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="stateProvinceCounty" name="stateProvinceCounty" type="text" value="California"/>
             </div>
-            <div>
-              <label class="block text-sm font-medium mb-1" for="domicileCountry">Domicile/Country of Permanent Residence</label>
-              <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="domicileCountry" name="domicileCountry">
-                <option disabled value="">Select domicile country</option>
-                <option value="domicile1" selected>Domicile Option 1</option>
-                <option value="domicile2">Domicile Option 2</option>
-                <option value="domicile3">Domicile Option 3</option>
-              </select>
+			 <div>
+              <label class="block text-sm font-medium mb-1" for="stateProvinceCounty">Domicile/Country of Permanent Residence<span class="text-red-600 ml-1">*</span></label>
+              <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="DomicileCountryofPermanentResidence" name="DomicileCountryofPermanentResidence" type="text" value="USA"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="country">Country</label>
+              <label class="block text-sm font-medium mb-1" for="country">Country<span class="text-red-600 ml-1">*</span></label>
               <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="country" name="country" required>
                 <option disabled value="">Select country</option>
                 <option value="United States of America" selected>United States of America</option>
@@ -422,7 +374,7 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="nationality">Nationality</label>
+              <label class="block text-sm font-medium mb-1" for="nationality">Nationality<span class="text-red-600 ml-1">*</span></label>
               <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="nationality" name="nationality" required>
                 <option disabled value="">Select nationality</option>
                 <option value="American" selected>American</option>
@@ -432,52 +384,66 @@
               </select>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="placeOfBirth">Place of Birth</label>
+              <label class="block text-sm font-medium mb-1" for="placeOfBirth">Place of Birth<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="placeOfBirth" name="placeOfBirth" type="text" value="Los Angeles"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="countryOfBirth">Country of Birth</label>
+              <label class="block text-sm font-medium mb-1" for="countryOfBirth">Country of Birth<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="countryOfBirth" name="countryOfBirth" type="text" value="United States of America"/>
+            </div>
+			<div>
+              <label class="block text-sm font-medium mb-1" for="countryOfBirth">Ethnicity<span class="text-red-600 ml-1">*</span></label>
+              <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="Ethnicity" name="Ethnicity" type="text" value="Asian"/>
             </div>
             <div>
               <label class="block text-sm font-medium mb-1" for="ucasNo">UCAS No.</label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="ucasNo" name="ucasNo" type="text" value="UCAS123456"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="residentialCategory">Residential Category</label>
-              <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="residentialCategory" name="residentialCategory">
-                <option disabled value="">Select residential category</option>
-                <option value="option1" selected>Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </select>
+              <label class="block text-sm font-medium mb-1" for="residentialCategory">Residential Category<span class="text-red-600 ml-1">*</span></label>
+              <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="residentialCategory" name="residentialCategory"  type="text" value="Mobile Home"/>
             </div>
             <div>
               <label class="block text-sm font-medium mb-1" for="medicalCode">Medical Code</label>
-              <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="medicalCode" name="medicalCode">
-                <option disabled value="">Select medical code</option>
-                <option value="option1" selected>Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </select>
+              <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="medicalCode" name="medicalCode"   type="text" value=" CPDH12"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="disabilityType">Disability Type</label>
-              <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="disabilityType" name="disabilityType">
-                <option disabled value="">Select disability type</option>
-                <option value="option1" selected>Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </select>
+              <label class="block text-sm font-medium mb-1" for="disabilityType">Disability Type<span class="text-red-600 ml-1">*</span></label>
+              <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="disabilityType" name="disabilityType"   type="text" value="N/A"/>
+                
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1">Has the applicant studied in the UK before?</label>
+              <label class="block text-sm font-medium mb-1">Has the applicant studied in this country before?<span class="text-red-600 ml-1">*</span></label>
               <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="studiedUKBefore" name="studiedUKBefore">
                 <option disabled value="">Select option</option>
                 <option value="yes" selected>Yes</option>
                 <option value="no">No</option>
               </select>
             </div>
+			
+			<div>
+		<label class="block text-sm font-medium mb-1" for="previousVisaRefusal">
+        Has the student had a previous Visa refusal for this country?
+		</label>
+		<select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="previousVisaRefusal" name="previousVisaRefusal">
+        <option disabled="" selected="" value="">
+         Select option
+        </option>
+        <option value="yes">Yes</option>
+        <option value="no"selected>No</option>
+       </select>
+       <div class="mt-2 hidden" id="previousVisaRefusalDetailsContainer">
+        <label class="block text-sm font-medium mb-1" for="previousVisaRefusalDetails">
+         Reason for visa refusal
+        </label>
+        <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="previousVisaRefusalDetails" name="previousVisaRefusalDetails" type="text"/>
+       </div>
+	   <div>
+              <label class="block text-sm font-medium mb-1" for="studentEmail">Agent Email<span class="text-red-600 ml-1">*</span></label>
+                <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="AgentEmail" name="AgentEmail" placeholder="Enter email" required type="email" value="john.doe@example.com"/>
+                <i class="fas fa-envelope absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
+           
+      </div>
             <div class="mt-6">
               <label class="block text-sm font-medium mb-1" for="counsellorName">Counsellor's Name</label>
               <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="counsellorName" name="counsellorName" readonly type="text" value="Mr. Hoque"/>
@@ -490,14 +456,14 @@
           <h2 class="text-lg font-semibold mb-6" id="contactDetailsHeading">Contact Details</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium mb-1" for="studentEmail">Student Email</label>
+              <label class="block text-sm font-medium mb-1" for="studentEmail">Student Email<span class="text-red-600 ml-1">*</span></label>
               <div class="relative">
                 <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="studentEmail" name="studentEmail" placeholder="Enter email" required type="email" value="john.doe@example.com"/>
                 <i class="fas fa-envelope absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
               </div>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="confirmEmail">Confirm Email</label>
+              <label class="block text-sm font-medium mb-1" for="confirmEmail">Confirm Email<span class="text-red-600 ml-1">*</span></label>
               <div class="relative">
                 <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="confirmEmail" name="confirmEmail" placeholder="Re-enter email" required type="email" value="john.doe@example.com"/>
                 <i class="fas fa-envelope absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
@@ -511,7 +477,7 @@
               </div>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="secondaryPhone">Mobile No.</label>
+              <label class="block text-sm font-medium mb-1" for="secondaryPhone">Mobile No.<span class="text-red-600 ml-1">*</span></label>
               <div class="relative">
                 <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="secondaryPhone" name="secondaryPhone" placeholder="Enter mobile number" type="tel" value="+1 555-987-6543"/>
                 <i class="fas fa-phone absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
@@ -525,26 +491,26 @@
           <h2 class="text-lg font-semibold mb-6" id="parentContactHeading">Parent/Emergency Contact</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium mb-1" for="relation">Relation to Student</label>
+              <label class="block text-sm font-medium mb-1" for="relation">Relation to Student<span class="text-red-600 ml-1">*</span></label>
               <div class="relative">
                 <input class="w-full rounded-lg bg-gray-50 border border-transparent pr-9 pl-3 text-gray-900 text-sm py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="relation" name="relation" placeholder="Father/Mother/Other" required type="text" value="Father"/>
                 <i class="fas fa-user-friends absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
               </div>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="parentFullName">Full Name</label>
+              <label class="block text-sm font-medium mb-1" for="parentFullName">Full Name<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentFullName" name="parentFullName" placeholder="Enter full name" required type="text" value="Robert Doe"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="parentPhone">Primary Telephone</label>
+              <label class="block text-sm font-medium mb-1" for="parentPhone">Primary Telephone<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentPhone" name="parentPhone" placeholder="Enter phone" required type="tel" value="+1 555-222-3333"/>
             </div>
             <div>
-              <label class="block text-sm font-medium mb-1" for="parentAddress">Address</label>
+              <label class="block text-sm font-medium mb-1" for="parentAddress">Address<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="parentAddress" name="parentAddress" placeholder="Same as student or enter address" type="text" value="123 Main Street, Apt 4B, Downtown"/>
             </div>
             <div class="md:col-span-2">
-              <label class="block text-sm font-medium mb-1" for="altEmail">Alternative/Emergency Email</label>
+              <label class="block text-sm font-medium mb-1" for="altEmail">Alternative/Emergency Email<span class="text-red-600 ml-1">*</span></label>
               <input class="w-full rounded-lg bg-gray-50 border border-transparent text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="altEmail" name="altEmail" placeholder="Enter email" type="email" value="robert.doe@example.com"/>
             </div>
           </div>
@@ -555,7 +521,7 @@
           <h2 class="text-lg font-semibold mb-6" id="educationLanguageHeading">Education &amp; Language</h2>
           <div class="space-y-6">
             <div>
-              <label class="block text-sm font-medium mb-2">Does the student hold any language qualification?</label>
+              <label class="block text-sm font-medium mb-2">Does the student hold any language qualification?<span class="text-red-600 ml-1">*</span></label>
               <div class="space-y-2">
                 <label class="flex items-center">
                   <input class="text-blue-600 focus:ring-blue-500 h-4 w-4" name="hasLanguageQual" type="radio" value="yes" checked/>
@@ -590,6 +556,14 @@
                   <label class="block text-sm mb-1" for="overall">Overall</label>
                   <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="overall" max="9" min="0" name="overall" step="0.5" type="number" value="7.5"/>
                 </div>
+				<div>
+                    <label class="block text-sm font-medium mb-1" for="dateFrom-0">Test Date</label>
+                    <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="TestDate" name="TestDate" required type="date" value="2016-09-01"/>
+                  </div>
+				<div>
+                  <label class="block text-sm mb-1" for="TRFNumber">TRF Number</label>
+                  <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="TRFNumber" name="TRFNumber" type="text" value="15BD001245MAH001"/>
+                </div>
               </div>
               <div class="mt-4">
                 <label class="block text-sm mb-1" for="cefrLevel">CEFR Level</label>
@@ -618,11 +592,11 @@
               <h3 class="text-md font-semibold mb-4 education-entry-title">Educational Entry 1</h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label class="block text-sm font-medium mb-1" for="institutionName-0">Institution Name</label>
+                  <label class="block text-sm font-medium mb-1" for="institutionName-0">Institution Name<span class="text-red-600 ml-1">*</span></label>
                   <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="institutionName-0" name="institutionName[]" required type="text" value="Example University"/>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-1" for="institutionCountry-0">Institution Country</label>
+                  <label class="block text-sm font-medium mb-1" for="institutionCountry-0">Institution Country<span class="text-red-600 ml-1">*</span></label>
                   <select class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="institutionCountry-0" name="institutionCountry[]" required>
                     <option disabled value="">Select country</option>
                     <option value="United States of America" selected>United States of America</option>
@@ -632,7 +606,7 @@
                   </select>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-1" for="courseStudied-0">Course Studied</label>
+                  <label class="block text-sm font-medium mb-1" for="courseStudied-0">Course Studied<span class="text-red-600 ml-1">*</span></label>
                   <input class="w-full rounded-lg bg-white border border-gray-200 text-gray-900 text-sm px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="courseStudied-0" name="courseStudied[]" required type="text" value="Computer Science"/>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
@@ -1036,6 +1010,19 @@
         updateStartDate(e.target);
       }
     });
+	
+	// Show/Hide previous visa refusal details based on selection
+      const previousVisaRefusalSelect = document.getElementById("previousVisaRefusal");
+      const previousVisaRefusalDetailsContainer = document.getElementById("previousVisaRefusalDetailsContainer");
+      if (previousVisaRefusalSelect && previousVisaRefusalDetailsContainer) {
+        previousVisaRefusalSelect.addEventListener("change", function () {
+          if (this.value === "yes") {
+            previousVisaRefusalDetailsContainer.classList.remove("hidden");
+          } else {
+            previousVisaRefusalDetailsContainer.classList.add("hidden");
+          }
+        });
+      }
 
     // Add multiple university applications
     const addUniversityBtn = document.getElementById("addUniversityApplication");
@@ -1099,6 +1086,7 @@
         }
       }
     });
+	
 
     // Initial setup for education entries and documents
     document.addEventListener("DOMContentLoaded", () => {
